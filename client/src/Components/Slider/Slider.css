@@ -1,0 +1,36 @@
+.slider{
+    overflow: hidden;
+}
+
+.inner-slider{
+    display: flex;
+}
+
+.slider-item{
+    height: auto;
+    min-width: auto;
+    padding: 10px 20px;
+    position: relative;
+    background-color: #f6f6f8;
+    margin-right: 10px;
+    cursor: grab;
+}
+
+.slider-item img{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.delete-img{
+    position: absolute;
+    height: auto;
+    bottom: 5px;
+    right: 100px;
+}
+
+.delete-img-icon{
+    cursor: pointer;
+}

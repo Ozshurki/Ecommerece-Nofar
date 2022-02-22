@@ -1,0 +1,23 @@
+.management-panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 1315px;
+    height: 100vh;
+    background-color: #eaedf0;
+    right:0;
+}
+
+@media (max-width: 1000px) {
+    .management-panel{
+        max-width: 350px;
+        right: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .management-panel{
+        max-width: 300px;
+
+    }
+}

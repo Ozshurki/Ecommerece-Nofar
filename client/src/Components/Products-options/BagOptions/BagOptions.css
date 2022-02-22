@@ -1,0 +1,38 @@
+.bags-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.bags-options-container p{
+    text-align: end;
+    padding-right: 3px;
+    padding-bottom: 5px;
+}
+
+.bags-options-container .options-wrapper{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.bags-options-container .option {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.red-option {
+    background-color: red;
+}
+
+.black-option {
+    background-color: black;
+}
+
+.green-option {
+    background-color: green;
+}

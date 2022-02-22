@@ -1,0 +1,14 @@
+.product-area-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1064px){
+    .product-area-content{
+        justify-content: space-around;
+    }
+}

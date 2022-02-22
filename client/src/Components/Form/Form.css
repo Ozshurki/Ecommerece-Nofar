@@ -1,0 +1,203 @@
+.product-form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.product-form .item{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0 0 20px 5px;
+    padding-right: 5px;
+}
+
+.description-wrapper{
+    height: 100px;
+}
+
+.product-form textarea{
+    left:0;
+    height: 100%;
+    width: 85%;
+    text-align: end;
+    padding: 5px 5px 0 0;
+    font-size: 0.9rem;
+    resize: none;
+    margin: 0 30px;
+}
+
+.product-form input{
+    margin-right: 30px;
+    padding-right: 5px;
+    width: 85%;
+    text-align: end;
+}
+
+.option-wrapper label{
+    text-align: end;
+}
+
+.option-wrapper .option{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: auto;
+    border: 2px solid red;
+}
+
+.product-form input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product-form label{
+    margin-right: 5px;
+}
+
+.form-photos-container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    padding-right: 5px;
+}
+
+.form-add-photo{
+    width: 150px;
+    text-align: end;
+}
+
+.form-photos-container .save-photo{
+    width: 85%;
+    overflow-x: hidden;
+}
+
+.save-btn, .product-form button{
+    border: 1px solid black;
+    background: none;
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    margin: 0 30px 20px 0;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.product-form button{
+    margin: 0 auto;
+}
+
+.save-btn:hover, .product-form button:hover{
+    color: #a749ff;
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+.option-wrapper{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 120px;
+    padding-right: 5px;
+}
+
+.option-wrapper input, .save-btn, .saved-options{
+    margin-top: 10px;
+}
+
+.added-photos{
+    height: auto;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+.added-photos ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.added-photos li{
+    position: relative;
+    margin: 0 10px 10px 10px;
+}
+
+.added-photos li span{
+    position: absolute;
+    top: 0;
+    left:0;
+    background: white;
+    opacity: 0.8;
+}
+
+.delete-photo-btn{
+    cursor: pointer;
+}
+
+.form-img{
+    height: 100px;
+    width: 100px;
+}
+
+.saved-options{
+    width: 100%;
+    height: 60px;
+}
+
+.saved-options ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.saved-options ul li{
+    margin: 5px 10px;
+}
+
+.option-item{
+    width: auto;
+    height: auto;
+    border: 2px solid red;
+}
+
+/*.added-photos li{*/
+/*    max-width: 200px;*/
+/*    overflow-x: hidden;*/
+/*    white-space: nowrap;*/
+/*    text-overflow: ellipsis;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.added-photos a{*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*    cursor: pointer;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*.added-photos a:hover{*/
+/*    color: deeppink;*/
+/*}*/
+
+
+
+@media (max-width: 600px) {
+
+    .product-form textarea{
+        width: 80%;
+    }
+
+}
