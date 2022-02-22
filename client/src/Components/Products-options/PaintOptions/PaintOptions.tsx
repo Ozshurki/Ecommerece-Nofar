@@ -18,7 +18,7 @@ const PaintOptions: React.FC<Props> = ({setOption}) => {
 
     return (
         <div className="paints-options-container">
-            <p>:בחר גודל</p>
+            <p>Choose size:</p>
             <div className="options-wrapper">
                 <div className="sm-option option">
                     <input type="radio"

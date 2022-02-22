@@ -9,13 +9,10 @@ interface Props{
 
 const Product: React.FC<Props>= (props) => {
 
-    useEffect(() =>{
-        console.log("in product")
-    })
     return (
         <div className="product-page">
             <ProductsKind productName={props.productName}/>
-            <ProductDetails productName={props.productName}/>
+            <ProductDetails/>
         </div>
     );
 };

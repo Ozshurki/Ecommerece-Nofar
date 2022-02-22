@@ -35,11 +35,8 @@ const containerVariants = {
     }
 };
 
-interface Props {
-    productName: string;
-}
 
-const ProductDetails: React.FC<Props> = (props) => {
+const ProductDetails: React.FC = () => {
 
     const {id} = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductInt>();
@@ -72,7 +69,7 @@ const ProductDetails: React.FC<Props> = (props) => {
                         animate="visible"
                         exit="exit">
                 <div className="product-img-container">
-                    <img src={image} alt="asd"/>
+                    <img src={product?.images[0]} alt="asd"/>
                     <div className="slider-container">
                         <Slider images={product?.images ?? []} setImage={handleImage}/>
                     </div>
@@ -84,12 +81,12 @@ const ProductDetails: React.FC<Props> = (props) => {
                     </div>
                     <div className="product-description">{product?.description}</div>
                     <div className="product-options">
-                        {props.productName === "ציורים" && <PaintOptions setOption={handleOptions}/>}
-                        {props.productName === "תיקים" && <BagOptions setOption={handleOptions}/>}
+                        {product?.type === "paint" && <PaintOptions setOption={handleOptions}/>}
+                        {product?.type === "bag" && <BagOptions setOption={handleOptions}/>}
                     </div>
                     <div className="product-btn-container">
-                        <motion.button whileHover={btnHoverEffect}>קנה</motion.button>
-                        <motion.button whileHover={btnHoverEffect}>הוסף לסל</motion.button>
+                        <motion.button whileHover={btnHoverEffect}>Buy</motion.button>
+                        <motion.button whileHover={btnHoverEffect}>Add to cart</motion.button>
                     </div>
                 </div>
             </motion.div>

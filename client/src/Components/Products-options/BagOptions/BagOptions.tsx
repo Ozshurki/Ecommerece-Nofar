@@ -8,7 +8,7 @@ interface Props {
 const BagOptions: React.FC<Props> = ({setOption}) => {
     return (
         <div className="bags-options-container">
-            <p>:בחר צבע</p>
+            <p>Choose color:</p>
             <div className="options-wrapper">
                 <div className="red-option option"
                      onClick={() => setOption("red")}/>

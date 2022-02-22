@@ -16,11 +16,11 @@ const MainSite: React.FC = () => {
         <>
             <Header/>
             <Routes>
-                <Route path="/products/:category/:id" element={<Product productName="מוצר"/>}/>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/products/paints" element={<Paints productName={"paints"}/>}/>
                 <Route path="/products/bags" element={<Bags productName={"bags"}/>}/>
                 <Route path="/products/courses" element={<Courses/>}/>
+                <Route path="/products/:category/:id" element={<Product productName="Product"/>}/>
             </Routes>
             <Footer/>
         </>
