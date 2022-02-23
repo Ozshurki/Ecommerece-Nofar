@@ -76,11 +76,11 @@ const Form: React.FC<Props> = (props) => {
     };
 
     const paintOptions = <div className="option-wrapper">
-        <label htmlFor="form-option">:הזן גדלים אפשריים</label>
+        <label htmlFor="form-option">Enter possible sizes:</label>
         <input type="text"
                ref={inputSizeRef}
                id="form-option"/>
-        <div className="save-btn" onClick={paintsOptionHandler}>שמור גודל</div>
+        <div className="save-btn" onClick={paintsOptionHandler}>Save size</div>
         <div className="saved-options">
             <ul>
                 {sizes.map((size: string) => {
@@ -102,12 +102,12 @@ const Form: React.FC<Props> = (props) => {
     </div>;
 
     const bagOptions = <div className="option-wrapper">
-        <label htmlFor="form-option">:הזן צבעים אפשריים</label>
+        <label htmlFor="form-option">Enter possible colors:</label>
         <input type="text"
                ref={inputColorRef}
                required
                id="form-option"/>
-        <div className="save-btn" onClick={bagsOptionHandler}>שמור צבע</div>
+        <div className="save-btn" onClick={bagsOptionHandler}>Save color</div>
     </div>;
 
     const formHandler = async (event: FormEvent<HTMLFormElement>) => {
@@ -125,8 +125,6 @@ const Form: React.FC<Props> = (props) => {
         };
 
         props.formHandler(data);
-
-
         navigate('/admin');
     };
 
@@ -135,36 +133,36 @@ const Form: React.FC<Props> = (props) => {
         <>
             <form className="product-form" onSubmit={formHandler}>
                 <div className="title-wrapper item">
-                    <label htmlFor="form-title">:כותרת</label>
+                    <label htmlFor="form-title">Title:</label>
                     <input type="text"
                            ref={inputTitleRef}
                            className="form-title"
                            id="form-title"/>
                 </div>
                 <div className="description-wrapper item">
-                    <label htmlFor="form-description">:תיאור</label>
+                    <label htmlFor="form-description">Description:</label>
                     <textarea className="form-description"
                               ref={inputDescriptionRef}
                               id="form-description"/>
                 </div>
                 <div className="price-wrapper item">
-                    <label htmlFor="form-price">:מחיר</label>
+                    <label htmlFor="form-price">Price:</label>
                     <input type="number"
                            ref={inputPriceRef}
                            className="form-price"
                            id="form-price"/>
                 </div>
                 <div className="form-photos-container">
-                    <label className="form-add-photo" htmlFor="save-photo">:הוסף תמונה</label>
+                    <label className="form-add-photo" htmlFor="save-photo">Add image:</label>
                     <input type="text"
                            className="save-photo"
                            id="save-photo"
                            ref={inputPhotoRef}/>
-                    <div className="save-btn" onClick={savePhotoHandler}>שמור תמונה</div>
+                    <div className="save-btn" onClick={savePhotoHandler}>Save image</div>
                 </div>
                 {props.productType === "paint" && paintOptions}
                 {props.productType === "bag" && bagOptions}
-                <button type="submit">שמור מוצר</button>
+                <button type="submit" className="save-product">Save product</button>
             </form>
             <div className="added-photos">
                 <ul>

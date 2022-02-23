@@ -12,6 +12,10 @@
     background: #009485;
 }
 
+.flex-table thead tr{
+    padding-right: 10px;
+}
+
 .flex-table thead tr,
 .flex-table tbody tr {
     display: flex;

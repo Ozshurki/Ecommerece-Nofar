@@ -6,7 +6,7 @@ import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 import axios from "axios";
 
 
-const COLUMNS = ["מחיר", "תיאור", "כותרת", "מספר סידורי"];
+const COLUMNS = ["Price", "Description", "Title", "ID"];
 
 const PaintsPanel: React.FC = () => {
 

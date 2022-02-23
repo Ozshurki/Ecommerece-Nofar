@@ -5,18 +5,22 @@ import BagsPanel from "./BagsPanel/BagsPanel";
 import CoursesPanel from "./CoursesPanel/CoursesPanel";
 import SideBar from "../SideBar/SideBar";
 import "./Panel.css";
+import ProductsKind from "../Products/ProductsKind/ProductsKind";
 
 
-const Panel: React.FC = () => {
+interface Props{
+    selectedProduct: string;
+}
 
-    const [selectedProduct, setSelectedProduct] = useState<string>("paints");
+const Panel: React.FC<Props>= ({selectedProduct}) => {
 
-    const handleProductClick = (product:string): void => setSelectedProduct(product);
+
+
+
 
     return (
         <React.Fragment>
-            <SideBar handleProductClick={handleProductClick}/>
-
+            <ProductsKind productName="Management panel"/>
             <div className="panel-container">
                 {selectedProduct === "paints" && <PaintsPanel/>}
                 {selectedProduct === "bags" && <BagsPanel/>}

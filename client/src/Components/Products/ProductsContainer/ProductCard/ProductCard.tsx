@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {ProductInt} from "../../../../Shared/Interfaces/Product-int";
 import './ProductCard.css';
 import {BiShekel} from "react-icons/bi";
+import Loader from "../../../Loader/Loader";
 
 
 interface Props {
@@ -17,7 +18,7 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
 
     const toggleHover = () => setIsHover(!isHover);
 
-    const onImgClick = () => {
+    const imgHandler = () => {
         toggleModal();
         setModalDetails(product);
     };
@@ -27,11 +28,12 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
              onMouseOver={toggleHover}
              onMouseOut={toggleHover}>
             <div className="product-card-img"
-                 onClick={onImgClick}>
-                <img
+                 onClick={imgHandler}>
+                {!product.images[0] ? <Loader/> : <img
                     className="img"
                     src={product.images[0]}
-                    alt=""/>
+                    alt=""/>}
+
             </div>
             <div className="product-card-content">
                 <div className="product-card-description">

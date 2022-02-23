@@ -82,11 +82,11 @@ input::-webkit-inner-spin-button {
     overflow-x: hidden;
 }
 
-.save-btn, .product-form button{
+.save-btn, .save-product{
     border: 1px solid black;
     background: none;
     cursor: pointer;
-    width: 100px;
+    width: 120px;
     text-align: center;
     margin: 0 30px 20px 0;
     border-radius: 10px;
@@ -97,8 +97,15 @@ input::-webkit-inner-spin-button {
     margin: 0 auto;
 }
 
-.save-btn:hover, .product-form button:hover{
+.save-btn:hover{
     color: #a749ff;
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+.save-product:hover{
+    background-color: black;
+    color: white;
     transform: scale(1.1);
     transition: all 0.3s;
 }

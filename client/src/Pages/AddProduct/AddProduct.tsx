@@ -27,7 +27,7 @@ const AddProduct: React.FC<Props> = (props) => {
 
     return (
         <div className="add-product-page">
-            <ProductsKind productName="הוספת מוצר"/>
+            <ProductsKind productName="Add product"/>
             <div className="add-product-container">
                 <Form productType={props.productType}
                       images={[]}

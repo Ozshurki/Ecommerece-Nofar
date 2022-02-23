@@ -23,8 +23,7 @@ const EditProduct: React.FC<Props> = (props) => {
 
         data["id"] = id;
         try {
-            const res = await api.put('/', data);
-
+            await api.put('/', data);
         } catch (err) {
             console.log(err);
         }
@@ -45,7 +44,7 @@ const EditProduct: React.FC<Props> = (props) => {
 
     return (
         <div className="edit-product-page">
-            <ProductsKind productName="עריכת מוצר"/>
+            <ProductsKind productName="Edit product"/>
             <div className="edit-product-container">
                 <Form productType={props.productType}
                       images={product?.images}

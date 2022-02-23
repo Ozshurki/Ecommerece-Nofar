@@ -27,12 +27,7 @@
     border: 1px solid black;
 }
 
-.option:hover{
-    background-color: #f6f6f8;
-    transition: all linear 0.3s;
-}
-
-.option-selected{
+.selected-option{
     color:white;
     background-color: black;
 }

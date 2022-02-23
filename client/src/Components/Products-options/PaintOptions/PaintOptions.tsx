@@ -9,19 +9,22 @@ interface Props {
 
 const PaintOptions: React.FC<Props> = ({setOption, sizes}) => {
 
-    const handleOptionClick = (option: string, event:MouseEvent<HTMLDivElement>) => {
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const handleOptionClick = (option: string, index: number) => {
         setOption(option);
-        event.currentTarget.classList.add("option-selected")
+        setSelectedIndex(index);
     };
 
     return (
         <div className="options-container">
             <p>Choose size:</p>
             <div className="options-wrapper">
-                {sizes.map((size: string) => {
+                {sizes.map((size: string, i: number) => {
                     return (
-                        <div className="option"
-                             onClick={(event:MouseEvent<HTMLDivElement>) => handleOptionClick(size, event)}>{size}</div>
+                        <div className={classNames("option", i === selectedIndex ? "selected-option" : "")}
+                             onClick={() => handleOptionClick(size, i)}>
+                            {size}
+                        </div>
                     );
                 })}
             </div>

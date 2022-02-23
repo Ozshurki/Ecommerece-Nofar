@@ -33,7 +33,6 @@ const Table: React.FC<Props> = (props) => {
             <tbody>
             {props.data.map(row =>
                 <div className="row-container">
-
                     <Link to={`/admin/products/${props.product}/edit/${row.id}`} className="row-link">
                         <tr className="table-row">
                             <td className="table-price">{row.price}</td>
@@ -45,7 +44,7 @@ const Table: React.FC<Props> = (props) => {
                     <AiOutlineCloseCircle className="delete-record"
                                           onClick={() => deleteHandler(row.id)}
                                           color="black"
-                                          size="1.2rem"/>
+                                          size="1.3rem"/>
                 </div>
             )}
             </tbody>

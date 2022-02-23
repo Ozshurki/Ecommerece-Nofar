@@ -1,10 +1,8 @@
 import React, {useState} from "react";
 import "./SideBar.css";
-import {AiOutlineClose} from "react-icons/ai";
-import {FiMenu} from "react-icons/fi";
 import {BiDownArrowAlt, BiUpArrowAlt} from "react-icons/bi";
 import {motion, AnimatePresence} from "framer-motion";
-import classNames from "classnames";
+import {Link} from "react-router-dom";
 
 interface Props {
     handleProductClick: (cur: string) => void;
@@ -49,9 +47,10 @@ const SideBar: React.FC<Props> = (props) => {
 
     return (
         <motion.div className="sidebar">
+            <Link to='/' className="home-link">Back to home page</Link>
             <div className="dropdown">
                 <div className="dropdown-btn"
-                     onClick={toggleDropdown}>אנא בחר מוצר
+                     onClick={toggleDropdown}>Choose product
                     <span>
                         {isDropdownActive ? arrowUp : arrowDown}
                     </span>
@@ -62,13 +61,13 @@ const SideBar: React.FC<Props> = (props) => {
                             initial="hidden"
                             animate="visible">
                     <div className="dropdown-item paints-option"
-                         onClick={paintClickHandler}>ציורים
+                         onClick={paintClickHandler}>Paints
                     </div>
                     <div className="dropdown-item option bags-option"
-                         onClick={bagsClickHandler}>תיקים
+                         onClick={bagsClickHandler}>Bags
                     </div>
                     <div className="dropdown-item option courses-option"
-                         onClick={coursesClickHandler}>קורסים
+                         onClick={coursesClickHandler}>Courses
                     </div>
                 </motion.div>}
             </div>
