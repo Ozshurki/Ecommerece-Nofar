@@ -68,7 +68,7 @@ const ProductPreview: React.FC<Props> = ({product, toggleModal, productName}) =>
                             </div>
                             <div className="modal-description">{product!.description}</div>
                             <motion.div className="modal-link-container">
-                                <Link className="modal-link" to={`/products/${productName}/${product!.id}`}>Go to product page</Link>
+                                <Link className="modal-link" to={`/products/${productName}/${product!.id}`}>Show full details</Link>
                             </motion.div>
                         </div>
                     </div>

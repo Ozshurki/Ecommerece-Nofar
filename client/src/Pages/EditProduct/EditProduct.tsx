@@ -6,15 +6,9 @@ import "./EditProduct.css";
 import axios from "axios";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
 
-
-// const images = [
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://cdn.wallpapersafari.com/32/0/Ku6C4G.jpg",
-//     "https://cdn.wallpapersafari.com/32/0/Ku6C4G.jpg",
-//     "https://cdn.wallpapersafari.com/32/0/Ku6C4G.jpg"];
+const api = axios.create({
+    baseURL: 'http://localhost:5000/api/admin/products'
+});
 
 interface Props {
     productType: string;
@@ -25,24 +19,29 @@ const EditProduct: React.FC<Props> = (props) => {
     const {id} = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductInt>();
 
-    const handleFormRequest = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log("edit click");
+    const formHandler = async (data:any) => {
+
+        data["id"] = id;
+        try {
+            const res = await api.put('/', data);
+
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const getProduct = async () => {
         try {
             const response = await axios.get(`http://localhost:5000/api/products/${id}`);
-            setProduct(response.data["product"])
-            console.log(product?.images)
+            setProduct(response.data["product"]);
         } catch (err) {
             console.log(err);
         }
     };
 
     useEffect(() => {
-        getProduct()
-    }, []);
+        getProduct();
+    }, [id]);
 
     return (
         <div className="edit-product-page">
@@ -50,7 +49,7 @@ const EditProduct: React.FC<Props> = (props) => {
             <div className="edit-product-container">
                 <Form productType={props.productType}
                       images={product?.images}
-                      method="UPDATE"/>
+                      formHandler={formHandler}/>
             </div>
         </div>
     );

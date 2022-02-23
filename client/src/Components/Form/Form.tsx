@@ -3,16 +3,15 @@ import {useNavigate} from "react-router-dom";
 import {AiOutlineCloseCircle} from "react-icons/ai";
 import "./Form.css";
 import axios from "axios";
+import {ProductInt} from "../../Shared/Interfaces/Product-int";
 
 interface Props {
     images?: string[];
     productType: string;
-    method: string;
+    formHandler: (data:any) => void;
 }
 
-const api = axios.create({
-    baseURL: 'http://localhost:5000/api/admin/products'
-});
+
 
 const Form: React.FC<Props> = (props) => {
     const navigate = useNavigate();
@@ -118,20 +117,15 @@ const Form: React.FC<Props> = (props) => {
         const data = {
             title: inputTitleRef.current!.value,
             description: inputDescriptionRef.current!.value,
-            price: inputPriceRef.current!.value,
+            price: parseInt(inputPriceRef.current!.value),
             type: props.productType,
             images: images,
             sizes: sizes,
             colors: colors
         };
 
-        try {
-            const res = await api.post('/', data);
-            console.log(res);
+        props.formHandler(data);
 
-        } catch (err) {
-            console.log(err);
-        }
 
         navigate('/admin');
     };

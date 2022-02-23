@@ -101,11 +101,17 @@
 }
 
 .modal-link-container:hover{
-    border-color: #a749ff;
+    background-color: black;
     transform: scale(1.08);
     transition: all 0.5s;
 }
 
+.modal-link-container:hover .modal-link{
+    color: white;
+
+    transform: scale(1.08);
+    transition: all 0.5s;
+}
 
 @media (max-width: 1000px){
 

@@ -49,14 +49,14 @@
     text-overflow: ellipsis;
 }
 
-.product-card-description a{
-    text-decoration: none;
-    color: black;
-}
-
 .product-card-description :hover{
     color: #a749ff;
     transition: color 0.5s;
+}
+
+.product-card-description a{
+    text-decoration: none;
+    color: black;
 }
 
 .product-card-price{
@@ -69,19 +69,3 @@
 .product-card-price span{
     margin-left: 5px;
 }
-
-.eye-icon{
-    height: 0;
-    opacity: 0;
-}
-
-.show-icon{
-    position: absolute;
-    bottom: 15px;
-    left: 42%;
-    height: 30px;
-    width: auto;
-    opacity: 1;
-}
-
-.icon:hover{}

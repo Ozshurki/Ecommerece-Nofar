@@ -1,7 +1,8 @@
+import {Request, Response, NextFunction} from "express";
 import {ProductDoc} from "../models/product-int";
 
 const HttpError = require('../models/http-error');
-import {Request, Response, NextFunction} from "express";
+
 
 
 const Product = require('../models/product');
@@ -17,6 +18,19 @@ const getPaints = async (req: Request, res: Response, next: NextFunction) => {
         return next(error);
     }
     res.status(200).json({paints: paints.map((paint:ProductDoc) => paint.toObject({getters:true}))});
+};
+
+const getBags = async (req: Request, res: Response, next: NextFunction) => {
+
+    let bags;
+
+    try {
+        bags = await Product.find({type: "bag"});
+    } catch (err) {
+        const error = new HttpError("Fetching bags failed, please try again later", 500);
+        return next(error);
+    }
+    res.status(200).json({bags: bags.map((bag:ProductDoc) => bag.toObject({getters:true}))});
 };
 
 const getProduct = async (req: Request, res: Response, next: NextFunction) => {
@@ -40,4 +54,5 @@ const getProduct = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 exports.getPaints = getPaints;
+exports.getBags = getBags;
 exports.getProduct = getProduct;

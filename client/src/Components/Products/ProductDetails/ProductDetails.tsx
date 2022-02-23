@@ -9,15 +9,12 @@ import PaintOptions from "../../Products-options/PaintOptions/PaintOptions";
 import BagOptions from "../../Products-options/BagOptions/BagOptions";
 import axios from "axios";
 
-// const images = ["https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://ae01.alicdn.com/kf/HTB1kextPXXXXXXZXFXXq6xXFXXXy/200x300.jpg",
-//     "https://cdn.wallpapersafari.com/32/0/Ku6C4G.jpg"];
 
 const btnHoverEffect = {
-    scale: 1.1,
-    boxShadow: "0px 0px 5px rgb(167,73,255)",
+    scale: 1.05,
+    color: "white",
+    backgroundColor: "black",
+    boxShadow: "0px 0px 5px",
 };
 
 const containerVariants = {
@@ -48,7 +45,7 @@ const ProductDetails: React.FC = () => {
         try{
             const response = await axios.get(`http://localhost:5000/api/products/${id}`);
             setProduct(response.data["product"]);
-            console.log(response);
+            setImage(product?.images[0] ?? "");
         }catch (err){
             console.log(err);
         }
@@ -69,7 +66,7 @@ const ProductDetails: React.FC = () => {
                         animate="visible"
                         exit="exit">
                 <div className="product-img-container">
-                    <img src={product?.images[0]} alt="asd"/>
+                    <img src={image} alt="asd"/>
                     <div className="slider-container">
                         <Slider images={product?.images ?? []} setImage={handleImage}/>
                     </div>
@@ -81,8 +78,8 @@ const ProductDetails: React.FC = () => {
                     </div>
                     <div className="product-description">{product?.description}</div>
                     <div className="product-options">
-                        {product?.type === "paint" && <PaintOptions setOption={handleOptions}/>}
-                        {product?.type === "bag" && <BagOptions setOption={handleOptions}/>}
+                        {product?.type === "paint" && <PaintOptions setOption={handleOptions} sizes={product.sizes}/>}
+                        {product?.type === "bag" && <BagOptions setOption={handleOptions} colors={product.colors}/>}
                     </div>
                     <div className="product-btn-container">
                         <motion.button whileHover={btnHoverEffect}>Buy</motion.button>

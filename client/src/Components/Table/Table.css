@@ -11,6 +11,7 @@
     color: #fff;
     background: #009485;
 }
+
 .flex-table thead tr,
 .flex-table tbody tr {
     display: flex;
@@ -32,13 +33,20 @@
     color:black;
 }
 
-.table-row{
+.row-container{
+    display: flex;
+    width: auto;
     border-bottom: 1px solid black;
+}
+
+.row-link{
+    width: 100%;
 }
 
 .table-row:hover{
     background-color:#6770d214;
 }
+
 .table-row:nth-of-type(2n){
    background: red;
 }
@@ -54,30 +62,6 @@
     text-overflow: ellipsis;
 }
 
-/*@media screen and (max-width: 640px) {*/
-/*    .flex-table {*/
-/*        border: 0;*/
-/*    }*/
-/*    .flex-table thead {*/
-/*        display: none;*/
-/*    }*/
-/*    .flex-table tbody tr {*/
-/*        flex-direction: column;*/
-/*        border: 1px solid #ccc;*/
-/*    }*/
-/*    .flex-table tbody tr td {*/
-/*        flex-direction: column;*/
-/*    }*/
-/*    .flex-table tbody tr td+td {*/
-/*        border-top: 1px solid #ccc;*/
-/*    }*/
-/*    .flex-table tbody tr td:before {*/
-/*        display: flex;*/
-/*        align-items: center;*/
-/*        margin: -.5em -.5em .75em -.5em;*/
-/*        padding: .5em;*/
-/*        content: attr(data-label);*/
-/*        color: #fff;*/
-/*        background: #009485;*/
-/*    }*/
-/*}*/
+.delete-record{
+margin-top: 5px;
+}

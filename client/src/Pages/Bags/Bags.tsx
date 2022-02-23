@@ -1,87 +1,34 @@
 import React, {useState, useEffect} from "react";
 import Products from "../../Components/Products/Products";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
+import axios from "axios";
 
 interface Props {
     productName: string;
 }
-//
-// const myProducts: ProductInt[] = [
-//     {
-//         productID: "12123",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/9.jpg",
-//         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi aspernatur assumenda consectetur cum deleniti\n" +
-//             "    dolore, eveniet iure laborum, natus nostrum omnis praesentium rerum? Alias culpa molestias odio quam\n" +
-//             "    similique.",
-//         price: 1
-//     },
-//     {
-//         productID: "12123",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 192.99
-//     },
-//     {
-//         productID: "12333",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 1.99
-//     },
-//     {
-//         productID: "12553",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 100.99
-//     },
-//     {
-//         productID: "12773",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 19.99
-//     },
-//     {
-//         productID: "12003",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 70.99
-//     },
-//     {
-//         productID: "12883",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 19.99
-//     },
-//     {
-//         productID: "124563",
-//         title: "myPaint",
-//         imgURL: "https://flone-react.pages.dev/assets/img/product/accessories/3.jpg",
-//         description: "This paint is blue and shit fucker",
-//         price: 19.99
-//     }
-// ];
-
 
 const Bags: React.FC<Props> = (props) => {
 
     const [products, setProducts] = useState<ProductInt[]>([]);
-    const updateProducts = (products:ProductInt[]) => setProducts(products);
+    const updateProducts = (products: ProductInt[]) => setProducts(products);
+
+    const getBags = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/api/products/bags");
+            const bags = response.data["bags"];
+            setProducts(bags);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     useEffect(() => {
-        //setProducts(myProducts);
-        /*
-        Fetch all bags products and pass them to the component
-         */
+        getBags();
     });
     return (
         <Products productName={props.productName}
                   products={products}
-                 setProducts={updateProducts}/>
+                  setProducts={updateProducts}/>
     );
 };
 

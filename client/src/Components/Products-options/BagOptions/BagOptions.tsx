@@ -1,23 +1,21 @@
 import React from "react";
-import "./BagOptions.css";
+import "../PaintOptions/PaintOptions.css"
 
 interface Props {
     setOption: (option: string) => void;
+    colors: string[];
 }
 
-const BagOptions: React.FC<Props> = ({setOption}) => {
+const BagOptions: React.FC<Props> = ({setOption, colors}) => {
     return (
-        <div className="bags-options-container">
+        <div className="options-container">
             <p>Choose color:</p>
             <div className="options-wrapper">
-                <div className="red-option option"
-                     onClick={() => setOption("red")}/>
-
-                <div className="black-option option"
-                     onClick={() => setOption("black")}/>
-
-                <div className="green-option option"
-                     onClick={() => setOption("green")}/>
+                {colors.map((color:string) => {
+                    return(
+                        <div className="option" onClick={() => setOption(color)}>{color}</div>
+                    )
+                })}
             </div>
         </div>
     );

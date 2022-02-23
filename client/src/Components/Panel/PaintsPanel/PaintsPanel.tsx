@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./PaintsPanel.css";
 import Table from "../../Table/Table";
-import {myProducts as data} from "../../../Pages/Paints/Paints";
 import {Link} from "react-router-dom";
 import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 import axios from "axios";
@@ -30,7 +29,8 @@ const PaintsPanel: React.FC = () => {
     return (
         <>
             <div className="add-product-wrapper">
-                <Link to={`/admin/products/paints/add-product`} className="add-product">הוסף תיק</Link>
+                <Link to={`/admin/products/paints/add-product`}
+                      className="add-product">Add paint</Link>
             </div>
             <Table data={data}
                    product="paints"

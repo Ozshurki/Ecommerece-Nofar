@@ -2,6 +2,12 @@ import React, {FormEvent} from "react";
 import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
 import Form from "../../Components/Form/Form";
 import "./AddProduct.css";
+import {ProductInt} from "../../Shared/Interfaces/Product-int";
+import axios from "axios";
+
+const api = axios.create({
+    baseURL: 'http://localhost:5000/api/admin/products'
+});
 
 interface Props {
     productType: string;
@@ -10,9 +16,13 @@ interface Props {
 const AddProduct: React.FC<Props> = (props) => {
 
 
-    const handleFormRequest = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log("add click");
+    const formHandler = async (data: any) => {
+        try {
+            const res = await api.post('/', data);
+
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -21,7 +31,7 @@ const AddProduct: React.FC<Props> = (props) => {
             <div className="add-product-container">
                 <Form productType={props.productType}
                       images={[]}
-                      method="POST"/>
+                      formHandler={formHandler}/>
             </div>
         </div>
     );
