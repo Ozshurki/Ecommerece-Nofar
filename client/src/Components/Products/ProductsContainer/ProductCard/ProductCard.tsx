@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import {ProductInt} from "../../../../Shared/Interfaces/Product-int";
 import './ProductCard.css';
 import {BiShekel} from "react-icons/bi";
 import Loader from "../../../Loader/Loader";
+import {LoaderContext} from "../../../../Shared/Context/LoaderContext";
 
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) => {
 
     const [isHover, setIsHover] = useState<boolean>(false);
+    const loaderCtx = useContext(LoaderContext);
 
     const toggleHover = () => setIsHover(!isHover);
 
@@ -23,17 +25,21 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
         setModalDetails(product);
     };
 
+    useEffect(() =>{
+        console.log(loaderCtx?.isLoader);
+    }, [loaderCtx?.isLoader]);
+
+
     return (
         <div className="product-card-container"
              onMouseOver={toggleHover}
              onMouseOut={toggleHover}>
             <div className="product-card-img"
                  onClick={imgHandler}>
-                {!product.images[0] ? <Loader/> : <img
+                {loaderCtx?.isLoader ? <Loader/> : <img
                     className="img"
                     src={product.images[0]}
                     alt=""/>}
-
             </div>
             <div className="product-card-content">
                 <div className="product-card-description">
