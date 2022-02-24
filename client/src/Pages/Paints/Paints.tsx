@@ -12,18 +12,16 @@ interface Props {
 const Paints: React.FC<Props> = (props) => {
 
     const [products, setProducts] = useState<ProductInt[]>([]);
-    const loaderCtx = useContext(LoaderContext)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const updateProducts = (products: ProductInt[]) => setProducts(products);
 
     const getPaints = async () => {
 
         try {
-            console.log(loaderCtx?.isLoader)
-            loaderCtx?.toggleLoader();
+            setIsLoading(true);
             const response = await axios.get("http://localhost:5000/api/products/paints");
-            loaderCtx?.toggleLoader();
-            console.log(loaderCtx?.isLoader)
+            setIsLoading(false);
             const paints = response.data["paints"];
             setProducts(paints);
         } catch (err) {
@@ -41,6 +39,7 @@ const Paints: React.FC<Props> = (props) => {
     return (
         <Products productName={props.productName}
                   products={products}
+                  isLoading={isLoading}
                   setProducts={updateProducts}/>
     );
 };

@@ -6,18 +6,26 @@ import {ProductInt} from "../../Shared/Interfaces/Product-int";
 interface Props {
     productName: string;
     products: ProductInt[];
+    isLoading?: boolean;
     setProducts: (products:ProductInt[]) => void;
 }
 
 const Products: React.FC<Props> = (props) => {
 
     return (
-        <React.Fragment>
-            <ProductsKind productName={props.productName}/>
-            <ProductsContainer products={props.products}
-                               productName={props.productName}
-                               setProducts={props.setProducts}/>
-        </React.Fragment>
+        <>
+            {props.isLoading ?
+                (<React.Fragment>
+                    <ProductsKind productName={props.productName}/>
+                    <ProductsContainer products={props.products}
+                                       productName={props.productName}
+                                       setProducts={props.setProducts}/>
+                </React.Fragment>)
+
+                : (<div>Loading...</div>)
+            }
+        </>
+
     );
 };
 

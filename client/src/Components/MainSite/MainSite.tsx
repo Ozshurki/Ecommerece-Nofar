@@ -7,7 +7,7 @@ import Paints from "../../Pages/Paints/Paints";
 import Product from "../../Pages/Product/Product";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-
+import "./MainSite.css";
 
 
 const MainSite: React.FC = () => {
@@ -15,13 +15,15 @@ const MainSite: React.FC = () => {
     return (
         <>
             <Header/>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/products/paints" element={<Paints productName={"paints"}/>}/>
-                <Route path="/products/bags" element={<Bags productName={"bags"}/>}/>
-                <Route path="/products/courses" element={<Courses/>}/>
-                <Route path="/products/:category/:id" element={<Product productName="Product"/>}/>
-            </Routes>
+            <div className="site-content">
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/products/paints" element={<Paints productName={"paints"}/>}/>
+                    <Route path="/products/bags" element={<Bags productName={"bags"}/>}/>
+                    <Route path="/products/courses" element={<Courses/>}/>
+                    <Route path="/products/:category/:id" element={<Product productName="Product"/>}/>
+                </Routes>
+            </div>
             <Footer/>
         </>
     );
