@@ -1,10 +1,7 @@
 import {Request, Response, NextFunction} from "express";
+
 import {ProductDoc} from "../models/product-int";
-
 const HttpError = require('../models/http-error');
-
-
-
 const Product = require('../models/product');
 
 const getProducts = async (req: Request, res: Response, next: NextFunction) => {

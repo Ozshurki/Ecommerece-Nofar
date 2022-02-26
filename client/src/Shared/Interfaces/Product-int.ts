@@ -3,8 +3,8 @@ export interface ProductInt{
     title: string;
     description: string;
     price: number;
+    type: string;
     images: string[];
     sizes: string[];
     colors: string[];
-    type: string;
 }

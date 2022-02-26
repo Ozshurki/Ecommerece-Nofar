@@ -4,6 +4,7 @@ import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 import ProductCard from "./ProductCard/ProductCard";
 import Modal from "../../Modal/Modal";
 import ProductPreview from "../../Modal/ProductPreview/ProductPreview";
+import SortProducts from "../../SortProducts/SortProducts";
 import "./ProductsContainer.css";
 
 interface Props {
@@ -14,7 +15,6 @@ interface Props {
 
 const ProductsContainer: React.FC<Props> = (props) => {
 
-    //const [products, setProducts] = useState<ProductInt[]>(props.products);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [modalDetails, setModalDetails] = useState<ProductInt | null>(null);
 
@@ -49,14 +49,7 @@ const ProductsContainer: React.FC<Props> = (props) => {
 
     return (
         <div className="products-wrapper">
-            <div className="products-sort-container">
-                <select onChange={selectHandler} id="sort-products">
-                    <option value="">---סוג מיון---</option>
-                    <option value="low-to-high">מהזול ליקר</option>
-                    <option value="high-to-low">מהיקר לזול</option>
-                </select>
-                <label htmlFor="sort-products">: מיין מחיר לפי</label>
-            </div>
+            {/*<SortProducts sortHandler={selectHandler}/>*/}
             <div className="products-container">
                 {props.products.map(product =>
                     <ProductCard product={product}

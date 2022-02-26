@@ -9,12 +9,12 @@ const loaderVariants = {
         y: [0, -30],
         transition: {
             x: {
-                yoyo: Infinity,
-                duration: 0.5
+                repeat: Infinity,
+                duration: 2
             },
             y: {
-                yoyo: Infinity,
-                duration: 0.25,
+                repeat: Infinity,
+                duration: 1,
                 ease: 'easeOut'
             }
         }

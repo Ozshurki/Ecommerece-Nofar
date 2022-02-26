@@ -27,7 +27,8 @@ const Banner: React.FC<Props> = (props) => {
                  onMouseLeave={toggleHover}>
 
                 <img className={"banner-img"}
-                     src={props.imgURL} alt=""/>
+                     src={props.imgURL}
+                     alt=""/>
                 <div className="banner-content">
                     <h3>{props.productName}</h3>
                     <BsArrowRightCircle onMouseOver={onMouseOver}

@@ -3,7 +3,7 @@
 .product-area-tab-list{
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    width: 82%;
     height: 50px;
     border-bottom: 1px solid black;
     margin-top: 20px;

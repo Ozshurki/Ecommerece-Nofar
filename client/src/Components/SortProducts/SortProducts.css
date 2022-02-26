@@ -1,0 +1,22 @@
+.products-sort-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#sort-products option{
+    text-align: center;
+}
+
+#sort-products{
+    height: 50%;
+    margin-right: 15px;
+}
+
+#sort-products{
+    width: 120px;
+    text-align: end;
+}

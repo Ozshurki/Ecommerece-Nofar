@@ -23,22 +23,22 @@ const Paints: React.FC = () => {
                 setIsLoading(true);
                 const response = await axios.get("http://localhost:5000/api/products/paints");
                 setIsLoading(false);
-                const paints = response.data["paints"];
-                setProducts(paints);
+
+                if(response.data["paints"])
+                    setProducts(response.data["paints"]);
+
             } catch (err) {
                 console.log(err);
             }
-
         };
 
         getPaints();
-
     }, []);
 
     return (
         <>
             <ProductsKind productName="Paints"/>
-            {isLoading ?
+            {!isLoading ?
                 <ProductsContainer products={products}
                                    productName="Paints"
                                    setProducts={setProducts}/>
