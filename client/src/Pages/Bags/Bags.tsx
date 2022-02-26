@@ -1,34 +1,45 @@
 import React, {useState, useEffect} from "react";
-import Products from "../../Components/Products/Products";
-import {ProductInt} from "../../Shared/Interfaces/Product-int";
 import axios from "axios";
 
-interface Props {
-    productName: string;
-}
+import {ProductInt} from "../../Shared/Interfaces/Product-int";
+import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
+import Loader from "../../Components/Loader/Loader";
 
-const Bags: React.FC<Props> = (props) => {
+
+const Bags: React.FC = () => {
 
     const [products, setProducts] = useState<ProductInt[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const updateProducts = (products: ProductInt[]) => setProducts(products);
 
-    const getBags = async () => {
-        try {
-            const response = await axios.get("http://localhost:5000/api/products/bags");
-            const bags = response.data["bags"];
-            setProducts(bags);
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
     useEffect(() => {
+
+        const getBags = async () => {
+            try {
+                setIsLoading(true);
+                const response = await axios.get("http://localhost:5000/api/products/bags");
+                setIsLoading(false);
+                const bags = response.data["bags"];
+                setProducts(bags);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
         getBags();
     });
     return (
-        <Products productName={props.productName}
-                  products={products}
-                  setProducts={updateProducts}/>
+        <>
+            <ProductsKind productName="Bags"/>
+            {isLoading ?
+                <ProductsContainer products={products}
+                                   productName="Bags"
+                                   setProducts={setProducts}/>
+                : <Loader/>
+            }
+        </>
     );
 };
 

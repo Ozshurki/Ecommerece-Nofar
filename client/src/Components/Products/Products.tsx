@@ -25,7 +25,6 @@ const Products: React.FC<Props> = (props) => {
                 : (<div>Loading...</div>)
             }
         </>
-
     );
 };
 

@@ -9,15 +9,6 @@ interface Props {
     height: string;
 }
 
-// const playerVariants = {
-//     hidden: {
-//         opacity: 0
-//     },
-//     visible: {
-//         opacity: 1
-//     },
-//     transition: {duration: 2}
-// };
 
 const playerVariants = {
     hidden: {
@@ -40,7 +31,7 @@ const Video: React.FC<Props> = (props) => {
                 className="video"
                 width={props.width}
                 height={props.height}
-                playing={true}
+                playing={false}
                 url={props.urlVideo}/>
         </motion.div>
     );

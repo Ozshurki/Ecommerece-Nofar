@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
+
 import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 import ProductCard from "./ProductCard/ProductCard";
-import "./ProductsContainer.css";
 import Modal from "../../Modal/Modal";
 import ProductPreview from "../../Modal/ProductPreview/ProductPreview";
+import "./ProductsContainer.css";
 
 interface Props {
     products: ProductInt[];

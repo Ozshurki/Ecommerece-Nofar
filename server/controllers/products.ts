@@ -7,6 +7,20 @@ const HttpError = require('../models/http-error');
 
 const Product = require('../models/product');
 
+const getProducts = async (req: Request, res: Response, next: NextFunction) => {
+
+    let products;
+
+    try{
+        products = await Product.find();
+    }catch (err){
+        const error = new HttpError("Fetching products failed, please try again later", 500);
+        return next(error);
+    }
+
+    res.status(200).json({products: products.map((product:ProductDoc) => product.toObject({getters:true}))});
+}
+
 const getPaints = async (req: Request, res: Response, next: NextFunction) => {
 
     let paints;
@@ -53,6 +67,7 @@ const getProduct = async (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json({product: product.toObject({getters:true})});
 };
 
+exports.getProducts = getProducts;
 exports.getPaints = getPaints;
 exports.getBags = getBags;
 exports.getProduct = getProduct;
