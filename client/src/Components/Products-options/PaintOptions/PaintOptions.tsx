@@ -22,7 +22,8 @@ const PaintOptions: React.FC<Props> = ({setOption, sizes}) => {
                 {sizes.map((size: string, i: number) => {
                     return (
                         <div className={classNames("option", i === selectedIndex ? "selected-option" : "")}
-                             onClick={() => handleOptionClick(size, i)}>
+                             onClick={() => handleOptionClick(size, i)}
+                             key={i}>
                             {size}
                         </div>
                     );

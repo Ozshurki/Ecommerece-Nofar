@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import "./ProductDetails.css";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+
+
 import {BiShekel} from "react-icons/bi";
+import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
 import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 import {motion, AnimatePresence} from "framer-motion";
 import Slider from "../../Slider/Slider";
 import PaintOptions from "../../Products-options/PaintOptions/PaintOptions";
 import BagOptions from "../../Products-options/BagOptions/BagOptions";
-import axios from "axios";
+import {cartActions} from "../../../store/slices/cart";
+import "./ProductDetails.css";
 
 
 const btnHoverEffect = {
@@ -38,25 +43,38 @@ const ProductDetails: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductInt>();
     const [option, setOption] = useState<string>("");
+    const [quantity, setQuantity] = useState<number>(0);
     const [image, setImage] = useState<string>("");
+    const dispatch = useDispatch();
 
     const getProduct = async () => {
 
-        try{
+        try {
             const response = await axios.get(`http://localhost:5000/api/products/${id}`);
             setProduct(response.data["product"]);
             setImage(product?.images[0] ?? "");
-        }catch (err){
+        } catch (err) {
             console.log(err);
         }
-    }
+    };
 
-    useEffect( () => {
+    useEffect(() => {
         getProduct();
     }, [id]);
 
     const handleOptions = (option: string) => setOption(option);
     const handleImage = (img: string) => setImage(img);
+    const quantityHandler = (newQuantity: number) => {
+
+        if ((quantity + newQuantity) === -1) return;
+        setQuantity(newQuantity);
+    };
+    const addToCartHandler = () => {
+
+        if (option === "") return;
+        dispatch(cartActions.addItem({product, quantity, option}));
+    };
+
 
     return (
         <AnimatePresence exitBeforeEnter>
@@ -81,9 +99,29 @@ const ProductDetails: React.FC = () => {
                         {product?.type === "paint" && <PaintOptions setOption={handleOptions} sizes={product.sizes}/>}
                         {product?.type === "bag" && <BagOptions setOption={handleOptions} colors={product.colors}/>}
                     </div>
+                    <div className="quantity-container">
+                        <div className="quantity-controllers">
+                            <div>
+                                <AiOutlinePlusCircle
+                                    color="black"
+                                    size="1.7rem"
+                                    onClick={() => quantityHandler(quantity + 1)}/>
+                            </div>
+                            <span>x{quantity}</span>
+                            <div>
+                                <AiOutlineMinusCircle
+                                    color="black"
+                                    size="1.7rem"
+                                    onClick={() => quantityHandler(quantity - 1)}/>
+                            </div>
+                        </div>
+                    </div>
                     <div className="product-btn-container">
                         <motion.button whileHover={btnHoverEffect}>Buy</motion.button>
-                        <motion.button whileHover={btnHoverEffect}>Add to cart</motion.button>
+                        <motion.button whileHover={btnHoverEffect}
+                                       onClick={addToCartHandler}>
+                            Add to cart
+                        </motion.button>
                     </div>
                 </div>
             </motion.div>

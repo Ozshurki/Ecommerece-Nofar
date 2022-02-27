@@ -56,6 +56,31 @@
     line-height: 25px;
 }
 
+.quantity-container{
+    display: flex;
+    min-height: 40px;
+    min-width: 300px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.quantity-container div{
+    min-width: 100px;
+}
+
+.quantity-controllers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+}
+
+.quantity-controllers div{
+    min-width: 30px;
+    background-color: white;
+    cursor: pointer;
+}
+
 .product-btn-container{
     display: flex;
     justify-content: space-between;

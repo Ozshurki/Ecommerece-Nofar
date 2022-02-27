@@ -47,7 +47,6 @@ const Home: React.FC = () => {
                                        setProducts={setProducts}/>
                     : <Loader/>
                 }
-
             </div>
         </div>
     );

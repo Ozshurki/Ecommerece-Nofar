@@ -1,24 +1,22 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import './Header.css';
-import Navigation from "./NavBar/Navigation/Navigation";
-import MobileNavBar from "./NavBar/MobileNavBar/MobileNavBar";
+import {useSelector, RootStateOrAny} from "react-redux";
 import {CgMenu} from "react-icons/cg";
 import {GrFormClose} from "react-icons/gr";
 import {BsCart3} from "react-icons/bs";
+
+import Navigation from "./NavBar/Navigation/Navigation";
+import MobileNavBar from "./NavBar/MobileNavBar/MobileNavBar";
+import './Header.css';
 
 
 const Header: React.FC = () => {
 
     const [open, setOpen] = useState<boolean>(false);
+    const cartQuantity:number = useSelector((state:RootStateOrAny )=> state.cart.totalQuantity);
 
-    const toggleOpen = () => {
-        setOpen(!open);
-    };
-
-    const closeMobileMenu = () => {
-        setOpen(false);
-    };
+    const toggleOpen = () => setOpen(!open);
+    const closeMobileMenu = () => setOpen(false);
 
     const hamburgerMenu = <CgMenu color="black"
                                   size="2rem"
@@ -38,12 +36,12 @@ const Header: React.FC = () => {
                 <Navigation/>
                 {open && <MobileNavBar closeMobileMenu={closeMobileMenu}/>}
             </div>
-            <button className="cart">
+            <Link to="/cart" className="cart">
                 <BsCart3 className="cart-icon"
                                color="black"
                                size="1.5rem"/>
-                <span className="cart-badge">0</span>
-            </button>
+                <span className="cart-badge">{cartQuantity}</span>
+            </Link>
             <div className="menu-icon">
                 {open ? closeMenu : hamburgerMenu}
             </div>

@@ -11,7 +11,6 @@
     background-color: white;
 }
 
-
 .logo {
     width: 120px;
     display: flex;
@@ -25,7 +24,6 @@
     display: flex;
     font-family: 'Poppins', sans-serif;
 }
-
 
 .cart {
     position: relative;
@@ -48,6 +46,7 @@
     width: 15px;
     top: 23px;
     right: -5px;
+    text-align: center;
 }
 
 .cart-icon{

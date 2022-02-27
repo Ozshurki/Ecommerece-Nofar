@@ -29,6 +29,7 @@ const Slider: React.FC<Props> = ({images, setImage}) => {
                 {images.map((image: string) => {
                     return (
                         <motion.div className="slider-item"
+                                    key={image}
                                     onClick={() => handleImgClick(image)}>
                             <img src={image} alt="sliderItem"/>
                         </motion.div>
