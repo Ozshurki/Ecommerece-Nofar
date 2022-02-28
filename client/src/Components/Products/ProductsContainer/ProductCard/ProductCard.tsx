@@ -34,7 +34,7 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
                      alt=""/>
             </div>
             <div className="product-card-content">
-                <div className="product-card-description">
+                <div className="product-card-description" onMouseOver={() => console.log("over")}>
                     <Link to={`/products/${product.type}s/${product.id}`}>
                         {product.description}
                     </Link>

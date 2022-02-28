@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
-import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import PageType from "../../Components/ProductsKind/PageType";
 import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
 import Loader from "../../Components/Loader/Loader";
 
@@ -13,26 +13,24 @@ const Bags: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const updateProducts = (products: ProductInt[]) => setProducts(products);
 
+    const getBags = async () => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get("http://localhost:5000/api/products/bags");
+            setIsLoading(false);
+            const bags = response.data["bags"];
+            setProducts(bags);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
-
-        const getBags = async () => {
-            try {
-                setIsLoading(true);
-                const response = await axios.get("http://localhost:5000/api/products/bags");
-                setIsLoading(false);
-                const bags = response.data["bags"];
-                setProducts(bags);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
         getBags();
-    });
+    },[isLoading]);
     return (
         <>
-            <ProductsKind productName="Bags"/>
+            <PageType productName="Bags"/>
             {isLoading ?
                 <ProductsContainer products={products}
                                    productName="Bags"

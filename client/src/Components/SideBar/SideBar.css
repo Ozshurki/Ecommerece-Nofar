@@ -5,20 +5,21 @@
     top: 0;
     left: 0;
     width: 15%;
-    background-color: #ffffff;
-    box-shadow: 3px 1px 10px 0;
+    background-color: #f7f7f7;
+    box-shadow: -7px 1px 12px 0;
     z-index: 1;
 }
 
 .sidebar .home-link {
+    background-color: #f7f7f7;
     text-decoration: none;
     width: 80%;
     padding: 10px;
     margin: 60px auto;
     color: black;
-    border: 1px solid black;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
 }
 
 .sidebar .home-link:hover{
@@ -35,7 +36,7 @@
 .dropdown-btn {
     width: auto;
     padding: 10px;
-    background: #fff;
+    background-color: #f7f7f7;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     font-weight: bold;
     color: #333;
@@ -49,10 +50,11 @@
 
 .dropdown .dropdown-content {
     position: absolute;
+    background-color: #f7f7f7;
     top: 50px;
     left: 0;
     padding: 15px;
-    background: #fff;
+
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     font-weight: 500;
     color: #333;

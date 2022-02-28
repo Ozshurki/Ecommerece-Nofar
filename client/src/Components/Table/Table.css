@@ -1,15 +1,14 @@
 .flex-table {
     display: flex;
     flex-direction: column;
-
     border: none;
-    background: #fff;
+    background-color: #f7f7f7;
     height: 100%;
     overflow-x: hidden;
 }
 .flex-table thead {
     color: #fff;
-    background: #009485;
+    background: #a749ff;
 }
 
 .flex-table thead tr{

@@ -1,14 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 
-import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import PageType from "../../Components/ProductsKind/PageType";
 import CartContainer from "../../Components/CartContainer/CartContainer";
+import OrderSummary from "../../Components/OrderSummary/OrderSummary";
+import "./Cart.css";
 
 const Cart: React.FC = () => {
 
+    const [selectedItemsPrice, setSelectedPrice] = useState<number>(0);
+
+    const updatePrice = (price: number) => setSelectedPrice(price);
+
+
     return (
         <>
-            <ProductsKind productName="My cart"/>
-            <CartContainer/>
+            <PageType productName="My cart"/>
+            <div className="cart-content">
+                <CartContainer updateSelectedPrice={updatePrice}/>
+                <OrderSummary price={selectedItemsPrice}/>
+            </div>
         </>
     );
 };

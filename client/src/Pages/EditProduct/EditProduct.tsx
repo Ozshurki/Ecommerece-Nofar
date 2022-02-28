@@ -1,6 +1,6 @@
 import React, {FormEvent, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import PageType from "../../Components/ProductsKind/PageType";
 import Form from "../../Components/Form/Form";
 import "./EditProduct.css";
 import axios from "axios";
@@ -44,7 +44,7 @@ const EditProduct: React.FC<Props> = (props) => {
 
     return (
         <div className="edit-product-page">
-            <ProductsKind productName="Edit product"/>
+            <PageType productName="Edit product"/>
             <div className="edit-product-container">
                 <Form productType={props.productType}
                       images={product?.images}

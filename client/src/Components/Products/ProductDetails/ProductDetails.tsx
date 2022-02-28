@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import axios from "axios";
 import {useDispatch} from "react-redux";
-
-
+import axios from "axios";
+import {motion, AnimatePresence} from "framer-motion";
 import {BiShekel} from "react-icons/bi";
 import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
+
 import {ProductInt} from "../../../Shared/Interfaces/Product-int";
-import {motion, AnimatePresence} from "framer-motion";
 import Slider from "../../Slider/Slider";
 import PaintOptions from "../../Products-options/PaintOptions/PaintOptions";
 import BagOptions from "../../Products-options/BagOptions/BagOptions";
@@ -103,15 +102,15 @@ const ProductDetails: React.FC = () => {
                         <div className="quantity-controllers">
                             <div>
                                 <AiOutlinePlusCircle
-                                    color="black"
-                                    size="1.7rem"
+                                    color="grey"
+                                    size="1.4rem"
                                     onClick={() => quantityHandler(quantity + 1)}/>
                             </div>
-                            <span>x{quantity}</span>
+                            <span>{quantity}</span>
                             <div>
                                 <AiOutlineMinusCircle
-                                    color="black"
-                                    size="1.7rem"
+                                    color="grey"
+                                    size="1.4rem"
                                     onClick={() => quantityHandler(quantity - 1)}/>
                             </div>
                         </div>
@@ -119,8 +118,7 @@ const ProductDetails: React.FC = () => {
                     <div className="product-btn-container">
                         <motion.button whileHover={btnHoverEffect}>Buy</motion.button>
                         <motion.button whileHover={btnHoverEffect}
-                                       onClick={addToCartHandler}>
-                            Add to cart
+                                       onClick={addToCartHandler}>Add to cart
                         </motion.button>
                     </div>
                 </div>

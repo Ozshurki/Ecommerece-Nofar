@@ -5,7 +5,7 @@ import BagsPanel from "./BagsPanel/BagsPanel";
 import CoursesPanel from "./CoursesPanel/CoursesPanel";
 import SideBar from "../SideBar/SideBar";
 import "./Panel.css";
-import ProductsKind from "../Products/ProductsKind/ProductsKind";
+import PageType from "../ProductsKind/PageType";
 
 
 interface Props{
@@ -20,7 +20,7 @@ const Panel: React.FC<Props>= ({selectedProduct}) => {
 
     return (
         <React.Fragment>
-            <ProductsKind productName="Management panel"/>
+            <PageType productName="Management panel"/>
             <div className="panel-container">
                 {selectedProduct === "paints" && <PaintsPanel/>}
                 {selectedProduct === "bags" && <BagsPanel/>}

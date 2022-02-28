@@ -1,5 +1,5 @@
 import React, {FormEvent} from "react";
-import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import PageType from "../../Components/ProductsKind/PageType";
 import Form from "../../Components/Form/Form";
 import "./AddProduct.css";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
@@ -27,7 +27,7 @@ const AddProduct: React.FC<Props> = (props) => {
 
     return (
         <div className="add-product-page">
-            <ProductsKind productName="Add product"/>
+            <PageType productName="Add product"/>
             <div className="add-product-container">
                 <Form productType={props.productType}
                       images={[]}

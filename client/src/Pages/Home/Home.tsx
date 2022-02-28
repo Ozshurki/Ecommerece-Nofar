@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 
 import Video from "../../Components/Video/Video";
@@ -16,23 +16,23 @@ const Home: React.FC = () => {
     const [products, setProducts] = useState<ProductInt[]>([]);
 
 
+    const getProducts = useCallback(async () => {
+
+        try {
+            setIsLoading(true);
+            const response = await axios.get("http://localhost:5000/api/products/");
+            setIsLoading(false);
+
+            if (response.data["products"])
+                setProducts(response.data["products"]);
+
+        } catch (err) {
+            console.log(err);
+        }
+    }, [products]);
+
     useEffect(() => {
-        console.log(1);
-        const getProducts = async () => {
-            try {
-                setIsLoading(true);
-                const response = await axios.get("http://localhost:5000/api/products/");
-                setIsLoading(false);
-
-                if (response.data["products"])
-                    setProducts(response.data["products"]);
-
-            } catch (err) {
-                console.log(err);
-            }
-        };
         getProducts();
-
     }, []);
 
     return (
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                 <Video urlVideo="sample-mp4-file-small.mp4" width="100%" height="300"/>
                 <ProductsBanner/>
                 <TabList/>
-                {isLoading ?
+                {!isLoading ?
                     <ProductsContainer products={products}
                                        productName="Bags"
                                        setProducts={setProducts}/>

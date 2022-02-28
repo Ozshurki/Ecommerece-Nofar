@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
-import ProductsKind from "../../Components/Products/ProductsKind/ProductsKind";
+import PageType from "../../Components/ProductsKind/PageType";
 import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
 import Loader from "../../Components/Loader/Loader";
 
@@ -14,30 +14,29 @@ const Paints: React.FC = () => {
 
     const updateProducts = (products: ProductInt[]) => setProducts(products);
 
+    const getPaints = async () => {
+
+        try {
+            setIsLoading(true);
+            const response = await axios.get("http://localhost:5000/api/products/paints");
+            setIsLoading(false);
+
+            if(response.data["paints"])
+                setProducts(response.data["paints"]);
+
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
 
-        const getPaints = async () => {
-
-            try {
-                setIsLoading(true);
-                const response = await axios.get("http://localhost:5000/api/products/paints");
-                setIsLoading(false);
-
-                if(response.data["paints"])
-                    setProducts(response.data["paints"]);
-
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
         getPaints();
-    }, []);
+    }, [isLoading]);
 
     return (
         <>
-            <ProductsKind productName="Paints"/>
+            <PageType productName="Paints"/>
             {!isLoading ?
                 <ProductsContainer products={products}
                                    productName="Paints"

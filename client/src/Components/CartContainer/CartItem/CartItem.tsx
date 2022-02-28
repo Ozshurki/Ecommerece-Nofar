@@ -1,30 +1,66 @@
-import React from "react";
-import {AiOutlineClose, AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
+import React, {useState} from "react";
+import {useDispatch} from "react-redux";
+import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
+import {FaTrashAlt} from "react-icons/fa";
 import {BiShekel} from "react-icons/bi";
+import {GrCheckboxSelected} from "react-icons/gr";
 
 import {CartItemType} from "../../../store/slices/cart";
-import {useDispatch} from "react-redux";
 import {cartActions} from "../../../store/slices/cart";
 import "./CartItem.css";
 
 
 interface Props {
     item: CartItemType;
+    addItem: (item: CartItemType) => void;
+    removeItem: (id: string) => void;
+    sumSelectedItems: () => void;
 }
 
 
-const CartItem: React.FC<Props> = ({item}) => {
+const CartItem: React.FC<Props> = ({item, addItem, removeItem, sumSelectedItems}) => {
 
+    const [isSelected, setIsSelected] = useState<boolean>(false);
     const dispatch = useDispatch();
+
+    const handleSelect = () => {
+
+        setIsSelected(!isSelected);
+
+        if (!isSelected)
+            addItem(item);
+        else
+            removeItem(item.product.id);
+    };
+
+    const handleIncrease = () => {
+        dispatch(cartActions.addItem(item));
+        sumSelectedItems();
+    };
+
+    const handleDecrease = () => {
+        dispatch(cartActions.decreaseQuantity(item.product.id));
+        sumSelectedItems();
+    };
 
     return (
         <div className="cart-item-container">
-            <div className="delete-btn item">
-                <AiOutlineClose
-                    color="grey"
-                    size="1.2rem"/>
+            <div className="select-item item">
+                {!isSelected ? <div onClick={handleSelect}/>
+                    :
+                    <GrCheckboxSelected color="black"
+                                        size="1.2rem"
+                                        onClick={handleSelect}/>
+                }
             </div>
-            <div className="item">
+            <div className="delete-btn item">
+                <FaTrashAlt
+                    className="cart-delete-icon"
+                    color="grey"
+                    size="1.5rem"
+                    onClick={() => dispatch(cartActions.deleteItem(item.product.id))}/>
+            </div>
+            <div className="cart-item-img item">
                 <img src={item.product.images[0]} alt="cart"/>
             </div>
             <div className="cart-item-details item">
@@ -40,18 +76,18 @@ const CartItem: React.FC<Props> = ({item}) => {
                     <AiOutlinePlusCircle
                         color="grey"
                         size="1.5rem"
-                        onClick={() => dispatch(cartActions.addItem(item))}/>
+                        onClick={handleIncrease}/>
                 </div>
-                <span>x{item.quantity}</span>
+                <span>{item.quantity}</span>
                 <div>
                     <AiOutlineMinusCircle
                         color="grey"
                         size="1.7rem"
-                    onClick={() => dispatch(cartActions.removeItem(item.product.id))}/>
+                        onClick={handleDecrease}/>
                 </div>
             </div>
             <div className="cart-item-price item">
-                {item.product.price * item.quantity}
+                {item.product.price}
                 <span><BiShekel color="black" size="1.2rem"/></span>
             </div>
         </div>

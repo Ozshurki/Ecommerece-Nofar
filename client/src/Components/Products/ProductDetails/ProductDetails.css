@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
 .product-details-container{
     display: flex;
     justify-content: center;
@@ -33,6 +36,7 @@
     width: 45%;
     text-align: end;
     padding: 5px 15px;
+    font-family: Poppins,sans-serif;
 }
 
 .product-title{
@@ -70,12 +74,14 @@
 
 .quantity-controllers{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 80px;
 }
 
 .quantity-controllers div{
+    display: flex;
+    justify-content: center;
     min-width: 30px;
     background-color: white;
     cursor: pointer;
@@ -92,12 +98,13 @@
 .product-btn-container button{
     position: relative;
     height: 30px;
-    width: 40%;
+    width: 45%;
     background: none;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     cursor: pointer;
     border: 1px solid black;
     color: black;
+    font-family: 'Hubballi', cursive;
 }
 
 @media (max-width: 1000px){
