@@ -8,13 +8,13 @@ const ProductsBanner: React.FC = () => {
     return (
         <div className="banners-container">
             <Banner url="/products/paints"
-                    productName="Paints"
+                    productType="Paints"
                     imgURL="https://flone-react.pages.dev/assets/img/banner/banner-1.jpg"/>
             <Banner url="/products/bags"
-                    productName="Bags"
+                    productType="Bags"
                     imgURL="https://flone-react.pages.dev/assets/img/banner/banner-2.jpg"/>
             <Banner url="/products/courses"
-                    productName="Courses"
+                    productType="Courses"
                     imgURL="https://flone-react.pages.dev/assets/img/banner/banner-3.jpg"/>
         </div>
     );

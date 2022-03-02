@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import PageType from "../ProductsKind/PageType";
+import React from 'react';
+import PageType from "../ProductsType/PageType";
 import ProductsContainer from "./ProductsContainer/ProductsContainer";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
 
 interface Props {
-    productName: string;
+    productType: string;
     products: ProductInt[];
     isLoading?: boolean;
     setProducts: (products:ProductInt[]) => void;
@@ -16,9 +16,9 @@ const Products: React.FC<Props> = (props) => {
         <>
             {props.isLoading ?
                 (<React.Fragment>
-                    <PageType productName={props.productName}/>
+                    <PageType productType={props.productType}/>
                     <ProductsContainer products={props.products}
-                                       productName={props.productName}
+                                       productName={props.productType}
                                        setProducts={props.setProducts}/>
                 </React.Fragment>)
 

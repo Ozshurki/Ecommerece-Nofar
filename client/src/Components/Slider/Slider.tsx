@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from "react";
 import {motion} from "framer-motion";
+
 import "./Slider.css";
 
 interface Props {
@@ -15,14 +16,20 @@ const Slider: React.FC<Props> = ({images, setImage}) => {
     const handleImgClick = (image:string) => setImage(image);
 
     useEffect(() => {
+
         if (sliderRef.current === null) return;
 
-        const width = sliderRef.current.scrollWidth - sliderRef.current.offsetWidth;
-        setSliderWith(width);
+
+        console.log(sliderRef)
+        console.log(`ScrollWidth is: ${sliderRef.current.scrollWidth}`)
+
+
+         const width = sliderRef.current.scrollWidth - sliderRef.current.offsetWidth;
+         setSliderWith(width);
     }, []);
 
     return (
-        <motion.div className="slider" ref={sliderRef}>
+        <motion.div ref={sliderRef} className="slider">
             <motion.div className="inner-slider"
                         drag="x"
                         dragConstraints={{right: 0, left: -sliderWidth}}>

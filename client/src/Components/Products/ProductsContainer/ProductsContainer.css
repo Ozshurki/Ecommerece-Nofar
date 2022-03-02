@@ -11,9 +11,22 @@
 
 .products-container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: start;
+    align-items: start;
     flex-wrap: wrap;
     width: 100%;
-    padding: 25px;
+    padding-left: 45px;
+}
 
+
+@media (max-width: 1470px){
+    .products-container{
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1120px){
+    .products-container{
+        justify-content: center;
+    }
 }

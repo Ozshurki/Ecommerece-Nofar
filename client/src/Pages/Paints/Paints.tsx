@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
-import PageType from "../../Components/ProductsKind/PageType";
+import PageType from "../../Components/ProductsType/PageType";
 import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
 import Loader from "../../Components/Loader/Loader";
 
@@ -17,12 +17,12 @@ const Paints: React.FC = () => {
     const getPaints = async () => {
 
         try {
-            setIsLoading(true);
+            //setIsLoading(true);
             const response = await axios.get("http://localhost:5000/api/products/paints");
-            setIsLoading(false);
+            //setIsLoading(false);
 
-            if(response.data["paints"])
-                setProducts(response.data["paints"]);
+            const paints = response.data["paints"];
+            setProducts(paints);
 
         } catch (err) {
             console.log(err);
@@ -30,13 +30,12 @@ const Paints: React.FC = () => {
     };
 
     useEffect(() => {
-
         getPaints();
-    }, [isLoading]);
+    }, []);
 
     return (
         <>
-            <PageType productName="Paints"/>
+            <PageType productType="Paints"/>
             {!isLoading ?
                 <ProductsContainer products={products}
                                    productName="Paints"

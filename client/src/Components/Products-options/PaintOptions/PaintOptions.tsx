@@ -21,7 +21,7 @@ const PaintOptions: React.FC<Props> = ({setOption, sizes}) => {
             <div className="options-wrapper">
                 {sizes.map((size: string, i: number) => {
                     return (
-                        <div className={classNames("option", i === selectedIndex ? "selected-option" : "")}
+                        <div className={classNames(i === selectedIndex ? "selected-option" : "option")}
                              onClick={() => handleOptionClick(size, i)}
                              key={i}>
                             {size}

@@ -19,9 +19,8 @@ const Home: React.FC = () => {
     const getProducts = useCallback(async () => {
 
         try {
-            setIsLoading(true);
+
             const response = await axios.get("http://localhost:5000/api/products/");
-            setIsLoading(false);
 
             if (response.data["products"])
                 setProducts(response.data["products"]);

@@ -1,14 +1,39 @@
-.add-product-page{
+.add-product-page, .edit-product-page{
     width: 100%;
     height: 100%;
     padding-bottom: 50px;
 }
 
-.add-product-container{
+.form-product-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 600px;
     height: auto;
     margin: 60px auto;
     box-shadow: 0 0 5px 0;
 }
 
+.form-product-container .home-link {
+    background-color: #f7f7f7;
+    text-decoration: none;
+    width: 30%;
+    margin-top: 10px;
+    padding: 10px;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-product-container .home-link:hover{
+    color:white;
+    background-color: black;
+}
+
+
+@media (max-width: 650px){
+    .form-product-container{
+        margin: 60px 20px;
+    }
+}
 

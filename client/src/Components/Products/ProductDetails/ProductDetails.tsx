@@ -42,7 +42,7 @@ const ProductDetails: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductInt>();
     const [option, setOption] = useState<string>("");
-    const [quantity, setQuantity] = useState<number>(0);
+    const [quantity, setQuantity] = useState<number>(1);
     const [image, setImage] = useState<string>("");
     const dispatch = useDispatch();
 

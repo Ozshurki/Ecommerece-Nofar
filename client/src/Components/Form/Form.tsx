@@ -1,16 +1,17 @@
 import React, {FormEvent, useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {AiOutlineCloseCircle} from "react-icons/ai";
+
+
 import "./Form.css";
-import axios from "axios";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
 
 interface Props {
     images?: string[];
     productType: string;
-    formHandler: (data:any) => void;
+    formHandler: (data: any) => void;
+    product?: ProductInt;
 }
-
 
 
 const Form: React.FC<Props> = (props) => {
@@ -39,18 +40,18 @@ const Form: React.FC<Props> = (props) => {
         inputPhotoRef.current.value = "";
     };
 
-    const deleteHandler = async (itemsArr: string[], item: string, type: string) => {
+    // Function gets any array of string and the wanted item to delete
 
-        const newArr = [...itemsArr];
-        const wantedIndex = newArr.indexOf(item);
+    const deleteHandler = async (items: string[], wantedItem: string, type: string) => {
 
-        if (wantedIndex !== -1) {
-            newArr.splice(wantedIndex, 1);
-            if (type === "paints") setSizes(newArr);
-            if (type === "photos") setImages(newArr);
-        }
-        // Send DELETE request to the server with image
+        const newItems = items.filter((item: string) => item !== wantedItem);
+
+        if (type === "paints") setSizes(newItems);
+        if (type === "photos") setImages(newItems);
     };
+
+
+    // Paints handler
 
     const paintsOptionHandler = () => {
 
@@ -62,6 +63,8 @@ const Form: React.FC<Props> = (props) => {
         setSizes(newSizeArr);
         inputSizeRef.current.value = "";
     };
+
+    // Bags handler
 
     const bagsOptionHandler = () => {
 
@@ -75,7 +78,9 @@ const Form: React.FC<Props> = (props) => {
         inputColorRef.current.value = "";
     };
 
-    const paintOptions = <div className="option-wrapper">
+    // Options for paint product
+
+    const paintOptions = <div className="option-wrapper item">
         <label htmlFor="form-option">Enter possible sizes:</label>
         <input type="text"
                ref={inputSizeRef}
@@ -101,15 +106,37 @@ const Form: React.FC<Props> = (props) => {
         </div>
     </div>;
 
-    const bagOptions = <div className="option-wrapper">
+
+    // Options for bag product
+
+    const bagOptions = <div className="option-wrapper item">
         <label htmlFor="form-option">Enter possible colors:</label>
         <input type="text"
                ref={inputColorRef}
-               required
                id="form-option"/>
         <div className="save-btn" onClick={bagsOptionHandler}>Save color</div>
+        <div className="saved-options">
+            <ul>
+                {colors.map((color: string) => {
+                    return (
+                        <li key={color}>
+                                <span>
+                                        <AiOutlineCloseCircle
+                                            className="delete-photo-btn"
+                                            color="black"
+                                            size="1.2rem"
+                                            onClick={() => deleteHandler(colors, color, "paints")}/>
+                                </span>
+                            <div className="option-item">{color}</div>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
     </div>;
 
+
+    // Generic form handler
     const formHandler = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
@@ -129,6 +156,10 @@ const Form: React.FC<Props> = (props) => {
     };
 
 
+    useEffect(() => {
+        console.log(images);
+    }, []);
+
     return (
         <>
             <form className="product-form" onSubmit={formHandler}>
@@ -137,23 +168,27 @@ const Form: React.FC<Props> = (props) => {
                     <input type="text"
                            ref={inputTitleRef}
                            className="form-title"
-                           id="form-title"/>
+                           id="form-title"
+                           placeholder={props.product?.title}/>
                 </div>
                 <div className="description-wrapper item">
                     <label htmlFor="form-description">Description:</label>
                     <textarea className="form-description"
                               ref={inputDescriptionRef}
-                              id="form-description"/>
+                              id="form-description"
+                              placeholder={props.product?.description}/>
                 </div>
                 <div className="price-wrapper item">
                     <label htmlFor="form-price">Price:</label>
                     <input type="number"
                            ref={inputPriceRef}
                            className="form-price"
-                           id="form-price"/>
+                           id="form-price"
+                           placeholder={props.product?.price.toString()}
+                    />
                 </div>
-                <div className="form-photos-container">
-                    <label className="form-add-photo" htmlFor="save-photo">Add image:</label>
+                <div className="form-photos-container item">
+                    <label className="form-add-photo" htmlFor="save-photo">Add image URL:</label>
                     <input type="text"
                            className="save-photo"
                            id="save-photo"

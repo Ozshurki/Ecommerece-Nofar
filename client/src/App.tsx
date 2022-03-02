@@ -1,6 +1,7 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {AnimatePresence} from "framer-motion";
+
 import ScrollToTop from "./Components/ScrollToTop";
 import MainSite from "./Components/MainSite/MainSite";
 import AdminRoutes from "./Components/AdminRoutes/AdminRoutes";

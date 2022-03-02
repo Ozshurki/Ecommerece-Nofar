@@ -21,7 +21,7 @@ const BagOptions: React.FC<Props> = ({setOption, colors}) => {
             <div className="options-wrapper">
                 {colors.map((color:string, i:number) => {
                     return(
-                        <div className={classNames("option", i === selectedIndex ? "selected-option" : "")}
+                        <div className={classNames(i === selectedIndex ? "selected-option" : "option")}
                              onClick={() => handleOptionClick(color, i)}>
                             {color}
                         </div>

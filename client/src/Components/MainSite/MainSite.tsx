@@ -23,7 +23,7 @@ const MainSite: React.FC = () => {
                     <Route path="/products/paints" element={<Paints/>}/>
                     <Route path="/products/bags" element={<Bags/>}/>
                     <Route path="/products/courses" element={<Courses/>}/>
-                    <Route path="/products/:category/:id" element={<Product productName="Product"/>}/>
+                    <Route path="/products/:category/:id" element={<Product productType="Product"/>}/>
                     <Route path="/cart" element={<Cart/>}/>
                 </Routes>
             </div>

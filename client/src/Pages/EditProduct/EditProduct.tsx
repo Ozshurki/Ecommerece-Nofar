@@ -1,10 +1,12 @@
-import React, {FormEvent, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import PageType from "../../Components/ProductsKind/PageType";
-import Form from "../../Components/Form/Form";
-import "./EditProduct.css";
+import React, {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
+
+import PageType from "../../Components/ProductsType/PageType";
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
+import Form from "../../Components/Form/Form";
+import "../AddProduct/AddProduct.css";
+
 
 const api = axios.create({
     baseURL: 'http://localhost:5000/api/admin/products'
@@ -14,7 +16,7 @@ interface Props {
     productType: string;
 }
 
-const EditProduct: React.FC<Props> = (props) => {
+const EditProduct: React.FC<Props> = ({productType}) => {
 
     const {id} = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductInt>();
@@ -22,6 +24,7 @@ const EditProduct: React.FC<Props> = (props) => {
     const formHandler = async (data:any) => {
 
         data["id"] = id;
+
         try {
             await api.put('/', data);
         } catch (err) {
@@ -44,9 +47,11 @@ const EditProduct: React.FC<Props> = (props) => {
 
     return (
         <div className="edit-product-page">
-            <PageType productName="Edit product"/>
-            <div className="edit-product-container">
-                <Form productType={props.productType}
+            <PageType productType="Edit product"/>
+            <div className="form-product-container">
+                <Link to='/admin' className="home-link">Go back</Link>
+                <Form productType={productType}
+                      product={product}
                       images={product?.images}
                       formHandler={formHandler}/>
             </div>

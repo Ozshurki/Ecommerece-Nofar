@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
 
 
 .backdrop{
@@ -27,9 +28,7 @@
     border-bottom: 1px solid #dee2e6;
 }
 
-.modal-header button{
-    background: none;
-    border: none;
+.modal-header svg{
     cursor: pointer;
 }
 
@@ -45,7 +44,7 @@
     align-items: center;
     width: 30%;
     height: 100%;
-    overflow: hidden;
+
 }
 
 .modal-img img{
@@ -85,64 +84,56 @@
 }
 
 .modal-link-container{
-    width: auto;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
     margin: 0 auto;
-    padding: 3px;
-    border: 1px solid black;
+    background-color: #a749ff;
+    color: white;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    box-shadow: none;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Hubballi', cursive;
 }
 
 .modal-link{
-    background: none;
+    width: auto;
+    height: auto;
+    color:white;
     text-decoration: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: black;
+    text-align: center;
+
 }
 
-.modal-link-container:hover{
-    background-color: black;
-    transform: scale(1.08);
-    transition: all 0.5s;
-}
-
-.modal-link-container:hover .modal-link{
-    color: white;
-
-    transform: scale(1.08);
-    transition: all 0.5s;
-}
-
-@media (max-width: 1000px){
-
-    .modal{
-        max-width: 500px;
-        overflow: auto;
+@media (max-width: 750px){
+    .product-preview{
+        height: 550px;
     }
 
     .modal-body{
-        display: inline;
+        flex-direction:column;
+        align-items: center;
+        justify-content: space-around;
+        height: 90%;
     }
-
     .modal-img{
-        width: 60%;
-        height: auto;
-        margin: 15px auto;
-    }
-
-    .modal-content{
-        width: 100%;
-        height: 300px;
-    }
-
-    .modal-description{
-        padding: 0;
+        width: 200px;
+        height: 200px;
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 950px){
+    .product-preview{
+        min-height: 350px;
+        margin: 0 30px;
+    }
 
-    .modal{
-        max-width: 350px;
+    .modal-img{
+        margin-top: 20px;
     }
 }

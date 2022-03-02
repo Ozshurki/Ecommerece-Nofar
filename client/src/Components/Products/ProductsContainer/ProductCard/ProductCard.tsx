@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-import {ProductInt} from "../../../../Shared/Interfaces/Product-int";
-import './ProductCard.css';
 import {BiShekel} from "react-icons/bi";
 
+import {ProductInt} from "../../../../Shared/Interfaces/Product-int";
+import './ProductCard.css';
 
 interface Props {
     product: ProductInt;
@@ -34,7 +34,7 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
                      alt=""/>
             </div>
             <div className="product-card-content">
-                <div className="product-card-description" onMouseOver={() => console.log("over")}>
+                <div className="product-card-description">
                     <Link to={`/products/${product.type}s/${product.id}`}>
                         {product.description}
                     </Link>

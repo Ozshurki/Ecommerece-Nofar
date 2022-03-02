@@ -49,7 +49,7 @@
     text-overflow: ellipsis;
 }
 
-.product-card-description a :hover{
+.product-card-description :hover{
     color: #a749ff;
     transition: color 0.5s;
 }

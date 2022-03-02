@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 import {BsArrowRightCircle} from 'react-icons/bs';
+
 import './Banner.css';
 
 interface Props {
     url: string;
-    productName: string;
+    productType: string;
     imgURL: string;
 }
 
@@ -26,11 +27,11 @@ const Banner: React.FC<Props> = (props) => {
                  onMouseEnter={toggleHover}
                  onMouseLeave={toggleHover}>
 
-                <img className={"banner-img"}
+                <img className="banner-img"
                      src={props.imgURL}
                      alt=""/>
                 <div className="banner-content">
-                    <h3>{props.productName}</h3>
+                    <h3>{props.productType}</h3>
                     <BsArrowRightCircle onMouseOver={onMouseOver}
                                         onMouseOut={onMouseOut}
                                         color={color}

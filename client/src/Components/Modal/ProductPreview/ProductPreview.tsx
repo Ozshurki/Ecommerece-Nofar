@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {AnimatePresence, motion} from "framer-motion";
 import {GrFormClose} from "react-icons/gr";
 import {BiShekel} from "react-icons/bi";
+
 import "./ProductPreview.css";
 import {ProductInt} from "../../../Shared/Interfaces/Product-int";
 
@@ -29,6 +30,12 @@ const modalVariants = {
     }
 };
 
+const btnHoverEffect = {
+    scale: 1.05,
+    color: "white",
+    boxShadow: "0px 0px 5px",
+};
+
 interface Props {
     product: ProductInt | null;
     toggleModal: () => void;
@@ -47,11 +54,11 @@ const ProductPreview: React.FC<Props> = ({product, toggleModal, productName}) =>
                         exit="hidden">
                 <motion.div className="product-preview" variants={modalVariants}>
                     <div className="modal-header">
-                        <button className="modal-close-btn">
+                        <div className="modal-close-btn">
                             <GrFormClose onClick={toggleModal}
                                          color="black"
                                          size="1.5rem"/>
-                        </button>
+                        </div>
                     </div>
                     <div className="modal-body">
                         <div className="modal-img">
@@ -67,8 +74,8 @@ const ProductPreview: React.FC<Props> = ({product, toggleModal, productName}) =>
                                 </span>
                             </div>
                             <div className="modal-description">{product!.description}</div>
-                            <motion.div className="modal-link-container">
-                                <Link className="modal-link" to={`/products/${productName}/${product!.id}`}>Show full details</Link>
+                            <motion.div className="modal-link-container" whileHover={btnHoverEffect}>
+                                <Link className="modal-link" to={`/products/${productName}/${product!.id}`}>Buy</Link>
                             </motion.div>
                         </div>
                     </div>

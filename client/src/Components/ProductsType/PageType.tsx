@@ -3,7 +3,7 @@ import './PageType.css';
 
 
 interface Props {
-    productName: string;
+    productType: string;
 }
 
 const PageType: React.FC<Props> = (props) => {
@@ -12,7 +12,7 @@ const PageType: React.FC<Props> = (props) => {
     return (
         <div className="products-type-container">
             <div className="products-type-content">
-                {props.productName}
+                {props.productType}
             </div>
         </div>
     );

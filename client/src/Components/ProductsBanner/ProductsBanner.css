@@ -1,16 +1,28 @@
 .banners-container {
     display: flex;
-    justify-content: space-between;
-    max-height: 300px;
+    justify-content: space-evenly;
+    min-height: 300px;
     width: 85%;
     margin: 25px 0;
     padding: 0 20px;
-    border: 2px solid red;
 }
 
-@media (max-width: 1100px){
+.banners-container a{
+    display: block;
+    height: 300px;
+    min-width: 30%;
+    margin: 0 20px;
+}
+
+@media (max-width: 900px){
     .banners-container{
         flex-direction: column;
         align-items: center;
+    }
+
+    .banners-container a{
+        max-height: 100%;
+        min-width: 270px;
+        margin: 20px 0;
     }
 }

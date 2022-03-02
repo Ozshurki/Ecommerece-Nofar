@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-evenly;
 }
-.options-container .option {
+.options-container .option, .selected-option {
     width: 80px;
     height: auto;
     display: flex;
@@ -28,6 +28,10 @@
     cursor: pointer;
     border: 1px solid black;
     font-family: Poppins,sans-serif;
+}
+
+.options-container .option:hover{
+    background-color: #f6f6f6;
 }
 
 .selected-option{

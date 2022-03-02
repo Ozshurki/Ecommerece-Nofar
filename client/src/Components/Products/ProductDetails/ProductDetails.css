@@ -12,7 +12,7 @@
 .product-img-container{
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 35%;
     height: 100%;
     overflow: hidden;
 }
@@ -25,7 +25,7 @@
 
 .slider-container{
     width: 100%;
-    min-height: 150px;
+    height: 200px;
     margin-top: 25px;
 }
 
@@ -84,6 +84,9 @@
     justify-content: center;
     min-width: 30px;
     background-color: white;
+}
+
+.quantity-controllers svg{
     cursor: pointer;
 }
 
@@ -115,7 +118,7 @@
     }
 
     .product-img-container{
-        width: 60%;
+        width: 80%;
         height: auto;
         margin: 15px auto;
     }

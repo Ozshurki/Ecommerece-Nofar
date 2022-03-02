@@ -30,7 +30,7 @@ const OrderSummary: React.FC<Props> = ({price}) => {
                 </div>
             </div>
             <motion.div className="order-btn"
-            whileHover={btnHoverEffect}>Buy</motion.div>
+            whileHover={btnHoverEffect}>Checkout</motion.div>
         </div>
     );
 };
