@@ -1,10 +1,16 @@
 .banners-container {
     display: flex;
-    justify-content: space-evenly;
     min-height: 300px;
     width: 85%;
     margin: 25px 0;
     padding: 0 20px;
+}
+
+.banners-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
 }
 
 .banners-container a{
@@ -15,12 +21,12 @@
 }
 
 @media (max-width: 900px){
-    .banners-container{
+    .banners-wrapper{
         flex-direction: column;
         align-items: center;
     }
 
-    .banners-container a{
+    .banners-wrapper a{
         max-height: 100%;
         min-width: 270px;
         margin: 20px 0;

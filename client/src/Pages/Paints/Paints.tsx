@@ -5,6 +5,8 @@ import {ProductInt} from "../../Shared/Interfaces/Product-int";
 import PageType from "../../Components/ProductsType/PageType";
 import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
 import Loader from "../../Components/Loader/Loader";
+import SortProducts from "../../Components/SortProducts/SortProducts";
+import {sortProducts} from "../../util/sortFunction";
 
 
 const Paints: React.FC = () => {
@@ -29,17 +31,28 @@ const Paints: React.FC = () => {
         }
     };
 
+    const sortHandler = (sortMethod: string) => {
+
+        const sortedProducts = sortProducts(products ,sortMethod);
+        setProducts(sortedProducts);
+    };
+
     useEffect(() => {
         getPaints();
+        sortHandler("low-to-high");
     }, []);
 
     return (
         <>
             <PageType productType="Paints"/>
             {!isLoading ?
-                <ProductsContainer products={products}
-                                   productName="Paints"
-                                   setProducts={setProducts}/>
+                <>
+                    <SortProducts sortHandler={sortHandler}/>
+                    <ProductsContainer products={products}
+                                       productName="Paints"
+                                       setProducts={setProducts}/>
+                </>
+
                 : <Loader/>
             }
         </>

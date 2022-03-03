@@ -2,6 +2,7 @@ import React from "react";
 import {BiShekel} from "react-icons/bi";
 import {motion} from "framer-motion";
 
+
 import "./OrderSummary.css";
 
 interface Props {
@@ -16,8 +17,14 @@ const btnHoverEffect = {
 
 const OrderSummary: React.FC<Props> = ({price}) => {
 
+    const animateFrom = {opacity: 0, x: "100vw"};
+    const animateTo = {opacity: 1, x: 0};
+
     return (
-        <div className="order-sum-container">
+        <motion.div className="order-sum-container"
+             initial={animateFrom}
+             animate={animateTo}
+             transition={{delay: 0.20}}>
             <h2 className="order-title">Order Summary</h2>
             <div className="order-summary">
                 <div>Total Price:</div>
@@ -31,7 +38,7 @@ const OrderSummary: React.FC<Props> = ({price}) => {
             </div>
             <motion.div className="order-btn"
             whileHover={btnHoverEffect}>Checkout</motion.div>
-        </div>
+        </motion.div>
     );
 };
 

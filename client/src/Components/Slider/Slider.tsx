@@ -13,8 +13,6 @@ const Slider: React.FC<Props> = ({images, setImage}) => {
     const [sliderWidth, setSliderWith] = useState<number>(0);
     const sliderRef = useRef<HTMLDivElement>(null);
 
-    const handleImgClick = (image:string) => setImage(image);
-
     useEffect(() => {
 
         if (sliderRef.current === null) return;
@@ -37,7 +35,7 @@ const Slider: React.FC<Props> = ({images, setImage}) => {
                     return (
                         <motion.div className="slider-item"
                                     key={image}
-                                    onClick={() => handleImgClick(image)}>
+                                    onClick={() => setImage(image)}>
                             <img src={image} alt="sliderItem"/>
                         </motion.div>
                     );

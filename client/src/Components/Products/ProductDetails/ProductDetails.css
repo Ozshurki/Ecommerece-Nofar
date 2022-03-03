@@ -41,11 +41,12 @@
 
 .product-title{
     height: 30px;
+    font-size: 1.3rem;
 }
 
 .product-price{
     height: 30px;
-    font-size: 1.8rem;
+    font-size: 2.3rem;
     color: #a749ff;
     font-family: 'Comforter', cursive;
 }
@@ -58,6 +59,7 @@
     height: auto;
     letter-spacing: 2px;
     line-height: 25px;
+    font-size: 1.3rem;
 }
 
 .quantity-container{

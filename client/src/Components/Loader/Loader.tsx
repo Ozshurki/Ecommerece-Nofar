@@ -3,31 +3,50 @@ import {motion} from "framer-motion";
 
 import "./Loader.css";
 
-const loaderVariants = {
-    animationOne: {
-        x: [-30, 30],
-        y: [0, -30],
+const loaderContainerVariants = {
+    start: {
         transition: {
-            x: {
-                repeat: Infinity,
-                duration: 2
-            },
-            y: {
-                repeat: Infinity,
-                duration: 1,
-                ease: 'easeOut'
-            }
+            staggerChildren: 0.1
+        }
+    },
+    end: {
+        transition: {
+            staggerChildren: 0.1
         }
     }
+};
+
+const loaderDotVariants = {
+    start: {
+        y: "0%"
+    },
+    end: {
+        y: "200%"
+    }
+};
+
+const loaderDotTransition = {
+    duration: 0.4,
+    yoyo: Infinity,
+    ease: "easeInOut"
 };
 
 const Loader: React.FC = () => {
     return (
         <motion.div className="loader"
-                    variants={loaderVariants}
-                    animate="animationOne"
-        >
-        </motion.div>);
+                    variants={loaderContainerVariants}
+                    initial="start"
+                    animate="end">
+            <motion.span className="loader-dot"
+                         variants={loaderDotVariants}
+                         transition={loaderDotTransition}/>
+            <motion.span className="loader-dot"
+                         variants={loaderDotVariants}
+                         transition={loaderDotTransition}/>
+            <motion.span className="loader-dot"
+                         variants={loaderDotVariants}
+                         transition={loaderDotTransition}/>
+        </motion.div>
+    );
 };
-
 export default Loader;

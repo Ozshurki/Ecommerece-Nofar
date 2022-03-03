@@ -1,15 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import "./SortProducts.css";
 
 interface Props{
-    sortHandler: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    sortHandler: (sortMethod: string) => void;
 }
 
 const SortProducts:React.FC<Props> = ({sortHandler}) => {
+
+    const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+            const method = event.target.value;
+            sortHandler(method);
+    }
+
+
+
     return(
         <div className="products-sort-container">
-            <select onChange={sortHandler} id="sort-products">
+            <select onChange={onSelectChange} id="sort-products">
                 <option value="">---סוג מיון---</option>
                 <option value="low-to-high">מהזול ליקר</option>
                 <option value="high-to-low">מהיקר לזול</option>

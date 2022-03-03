@@ -4,6 +4,7 @@ import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
 import {FaTrashAlt} from "react-icons/fa";
 import {BiShekel} from "react-icons/bi";
 import {GrCheckboxSelected} from "react-icons/gr";
+import {motion} from "framer-motion";
 
 import {CartItemType} from "../../../store/slices/cart";
 import {cartActions} from "../../../store/slices/cart";
@@ -15,13 +16,18 @@ interface Props {
     addItem: (item: CartItemType) => void;
     removeItem: (id: string) => void;
     sumSelectedItems: () => void;
+    coordinate: number;
+    inView: any;
 }
 
 
-const CartItem: React.FC<Props> = ({item, addItem, removeItem, sumSelectedItems}) => {
+const CartItem: React.FC<Props> = ({item, addItem, removeItem, sumSelectedItems, coordinate, inView}) => {
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const dispatch = useDispatch();
+
+    const animateFrom = {opacity: 0, x: -40};
+    const animateTo = {opacity: 1, x: 0};
 
     const handleSelect = () => {
 
@@ -43,8 +49,12 @@ const CartItem: React.FC<Props> = ({item, addItem, removeItem, sumSelectedItems}
         sumSelectedItems();
     };
 
+    // Render only if the father is in view
     return (
-        <div className="cart-item-container">
+        inView && <motion.div className="cart-item-container"
+                               initial={animateFrom}
+                               animate={animateTo}
+                               transition={{delay: coordinate, type: "spring"}}>
             <div className="select-item item">
                 {!isSelected ? <div onClick={handleSelect}/>
                     :
@@ -90,7 +100,7 @@ const CartItem: React.FC<Props> = ({item, addItem, removeItem, sumSelectedItems}
                 {item.product.price}
                 <span><BiShekel color="black" size="1.2rem"/></span>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
