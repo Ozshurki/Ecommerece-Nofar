@@ -18,6 +18,7 @@ const btnHoverEffect = {
     scale: 1.05,
     color: "white",
     backgroundColor: "black",
+    borderColor: "white",
     boxShadow: "0px 0px 5px",
 };
 

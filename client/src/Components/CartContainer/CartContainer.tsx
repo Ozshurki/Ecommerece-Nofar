@@ -20,7 +20,7 @@ const CartContainer: React.FC<Props> = ({updateSelectedPrice}) => {
     const [selectedItems, setSelectedItems] = useState<CartItemType[]>([]);
 
     // Activate element when 20% of him on the screen
-    const [ref, inView] = useInView({threshold: 0.4});
+    const [ref, inView] = useInView({threshold: 0.3});
     const animation = useAnimation();
 
     const sumSelectedItems = () => {

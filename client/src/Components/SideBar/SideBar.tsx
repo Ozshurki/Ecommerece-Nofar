@@ -1,26 +1,13 @@
 import React, {useState} from "react";
-import "./SideBar.css";
 import {BiDownArrowAlt, BiUpArrowAlt} from "react-icons/bi";
-import {motion, AnimatePresence} from "framer-motion";
+import {motion} from "framer-motion";
 import {Link} from "react-router-dom";
+
+import "./SideBar.css";
 
 interface Props {
     handleProductClick: (cur: string) => void;
 }
-
-const sideBarVariants = {
-    hidden: {
-        x: "-100vw"
-    },
-    visible: {
-        x: 0,
-        transition: {duration: 1.3}
-    },
-    exit: {
-        x: "-100vw",
-        transition: {ease: "easeInOut"}
-    }
-};
 const dropdownVariants = {
     hidden: {
         y: "-20px"
@@ -35,22 +22,21 @@ const arrowDown = <BiDownArrowAlt color="black" size="1.5rem"/>;
 const arrowUp = <BiUpArrowAlt color="black" size="1.5rem"/>;
 
 
-const SideBar: React.FC<Props> = (props) => {
+const SideBar: React.FC<Props> = ({handleProductClick}) => {
 
     const [isDropdownActive, setIsDropdownActive] = useState<boolean>(false);
 
-    const paintClickHandler = (): void => props.handleProductClick("paints");
-    const bagsClickHandler = (): void => props.handleProductClick("bags");
-    const coursesClickHandler = (): void => props.handleProductClick("courses");
-    const toggleDropdown = () => setIsDropdownActive(!isDropdownActive);
-
+    const clickHandler = (productType:string) => {
+        handleProductClick(productType);
+        setIsDropdownActive(!isDropdownActive);
+    }
 
     return (
         <motion.div className="sidebar">
             <Link to='/' className="home-link">Back to home page</Link>
             <div className="dropdown">
                 <div className="dropdown-btn"
-                     onClick={toggleDropdown}>Choose product
+                     onClick={() => setIsDropdownActive(!isDropdownActive)}>Choose product
                     <span>
                         {isDropdownActive ? arrowUp : arrowDown}
                     </span>
@@ -61,13 +47,13 @@ const SideBar: React.FC<Props> = (props) => {
                             initial="hidden"
                             animate="visible">
                     <div className="dropdown-item paints-option"
-                         onClick={paintClickHandler}>Paints
+                         onClick={() => clickHandler("paints")}>Paints
                     </div>
                     <div className="dropdown-item option bags-option"
-                         onClick={bagsClickHandler}>Bags
+                         onClick={() => clickHandler("bags")}>Bags
                     </div>
                     <div className="dropdown-item option courses-option"
-                         onClick={coursesClickHandler}>Courses
+                         onClick={() => clickHandler("courses")}>Courses
                     </div>
                 </motion.div>}
             </div>

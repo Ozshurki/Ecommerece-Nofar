@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 import {BiShekel} from "react-icons/bi";
+import { motion } from "framer-motion";
 
 import {ProductInt} from "../../../../Shared/Interfaces/Product-int";
 import './ProductCard.css';
@@ -24,7 +25,7 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
 
 
     return (
-        <div className="product-card-container"
+        <motion.div layout className="product-card-container"
              onMouseOver={toggleHover}
              onMouseOut={toggleHover}>
             <div className="product-card-img"
@@ -45,7 +46,7 @@ const ProductCard: React.FC<Props> = ({product, toggleModal, setModalDetails}) =
                     </span>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
