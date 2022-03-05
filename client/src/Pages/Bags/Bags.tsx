@@ -5,6 +5,8 @@ import {ProductInt} from "../../Shared/Interfaces/Product-int";
 import PageType from "../../Components/ProductsType/PageType";
 import ProductsContainer from "../../Components/Products/ProductsContainer/ProductsContainer";
 import Loader from "../../Components/Loader/Loader";
+import SortProducts from "../../Components/SortProducts/SortProducts";
+import {sortProducts} from "../../util/sortFunction";
 
 
 const Bags: React.FC = () => {
@@ -15,12 +17,13 @@ const Bags: React.FC = () => {
     const updateProducts = (products: ProductInt[]) => setProducts(products);
 
 
-    const getBags = async () => {
+
+    const getBags = useCallback(async () => {
 
         try {
-            //setIsLoading(true);
+            setIsLoading(true);
             const response = await axios.get("http://localhost:5000/api/products/bags");
-            //setIsLoading(false);
+            setIsLoading(false);
 
             const bags = response.data["bags"];
             setProducts(bags);
@@ -28,20 +31,29 @@ const Bags: React.FC = () => {
         } catch (err) {
             console.log(err);
         }
+    }, []);
+
+    const sortHandler = (sortMethod: string) => {
+
+        const sortedProducts = sortProducts(products ,sortMethod);
+        setProducts(sortedProducts);
     };
 
     useEffect(() => {
         getBags();
-    },[]);
+    }, [getBags]);
 
 
     return (
         <>
             <PageType productType="Bags"/>
-            {isLoading ?
-                <ProductsContainer products={products}
-                                   productName="Bags"
-                                   setProducts={setProducts}/>
+            {!isLoading ?
+                <>
+                    <SortProducts sortHandler={sortHandler}/>
+                    <ProductsContainer products={products}
+                                       productName="Bags"
+                                       setProducts={setProducts}/>
+                </>
                 : <Loader/>
             }
         </>

@@ -18,7 +18,7 @@ const ProductsBanner: React.FC = () => {
             await animation.start({
                 x: 0,
                 transition: {
-                    type: 'spring', duration: 2, bounce: 0.3
+                    type: 'spring', duration: 1.5, bounce: 0.2
                 }
             });
         else

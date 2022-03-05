@@ -9,14 +9,14 @@ export type CartItemType = {
 
 type sliceState = {
     items: CartItemType[];
-    totalPrice: number;
     totalQuantity: number;
+    totalPrice: number;
 }
 
 const initialState: sliceState = {
     items: [],
-    totalPrice: 0,
     totalQuantity: 0,
+    totalPrice: 0
 };
 
 const calcTotalPrice = (items: CartItemType[]): number => {

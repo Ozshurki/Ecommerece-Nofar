@@ -19,20 +19,19 @@ const Home: React.FC = () => {
     const getProducts = useCallback(async () => {
 
         try {
-
+            setIsLoading(true);
             const response = await axios.get("http://localhost:5000/api/products/");
-
-            if (response.data["products"])
-                setProducts(response.data["products"]);
+            setProducts(response.data.products);
+            setIsLoading(false);
 
         } catch (err) {
             console.log(err);
         }
-    }, [products]);
+    }, []);
 
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [getProducts]);
 
     return (
         <div className="content-container">

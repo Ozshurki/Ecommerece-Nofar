@@ -46,7 +46,7 @@ interface Props {
 const ProductPreview: React.FC<Props> = ({product, toggleModal, productName}) => {
 
     return (
-        <AnimatePresence exitBeforeEnter >
+        <AnimatePresence exitBeforeEnter>
             <motion.div className="backdrop"
                         variants={backDropVariants}
                         initial="hidden"
@@ -74,9 +74,11 @@ const ProductPreview: React.FC<Props> = ({product, toggleModal, productName}) =>
                                 </span>
                             </div>
                             <div className="modal-description">{product!.description}</div>
-                            <motion.div className="modal-link-container" whileHover={btnHoverEffect}>
-                                <Link className="modal-link" to={`/products/${productName}/${product!.id}`}>Buy</Link>
-                            </motion.div>
+                            <Link to={`/products/${productName}/${product!.id}`}>
+                                <motion.div className="modal-link-container" whileHover={btnHoverEffect}>
+                                    <div className="modal-link">Buy</div>
+                                </motion.div>
+                            </Link>
                         </div>
                     </div>
                 </motion.div>

@@ -9,7 +9,7 @@ interface Props {
 
 const PaintOptions: React.FC<Props> = ({setOption, sizes}) => {
 
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
     const handleOptionClick = (option: string, index: number) => {
         setOption(option);
         setSelectedIndex(index);

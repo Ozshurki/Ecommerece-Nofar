@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 
 import {ProductInt} from "../../Shared/Interfaces/Product-int";
@@ -14,22 +14,18 @@ const Paints: React.FC = () => {
     const [products, setProducts] = useState<ProductInt[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const updateProducts = (products: ProductInt[]) => setProducts(products);
-
-    const getPaints = async () => {
+    const getPaints = useCallback( async () => {
 
         try {
-            //setIsLoading(true);
+            setIsLoading(true);
             const response = await axios.get("http://localhost:5000/api/products/paints");
-            //setIsLoading(false);
-
-            const paints = response.data["paints"];
-            setProducts(paints);
+            setIsLoading(false);
+            setProducts(response.data.paints);
 
         } catch (err) {
             console.log(err);
         }
-    };
+    },[]);
 
     const sortHandler = (sortMethod: string) => {
 
@@ -40,7 +36,7 @@ const Paints: React.FC = () => {
     useEffect(() => {
         getPaints();
         sortHandler("low-to-high");
-    }, []);
+    }, [getPaints]);
 
     return (
         <>
@@ -52,7 +48,6 @@ const Paints: React.FC = () => {
                                        productName="Paints"
                                        setProducts={setProducts}/>
                 </>
-
                 : <Loader/>
             }
         </>

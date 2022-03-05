@@ -9,7 +9,7 @@ interface Props {
 
 const BagOptions: React.FC<Props> = ({setOption, colors}) => {
 
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
     const handleOptionClick = (option: string, index: number) => {
         setOption(option);
         setSelectedIndex(index);

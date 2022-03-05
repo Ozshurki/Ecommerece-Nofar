@@ -59,6 +59,8 @@
 .cart-item-details .title{
     font-family: Poppins,sans-serif;
     text-align: center;
+    text-decoration: none;
+    color: black;
 }
 
 .cart-item-details .option{
